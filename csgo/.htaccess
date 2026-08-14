@@ -1,0 +1,22 @@
+DirectoryIndex index.php
+
+<FilesMatch "\.(?:html|php)$">
+	Order Deny,Allow
+	Deny from all
+	Allow from 127.0.0.1
+</FilesMatch>
+
+<Files old/*>
+    deny from all
+</Files>
+
+<Files index.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

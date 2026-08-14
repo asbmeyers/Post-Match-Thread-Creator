@@ -1,0 +1,646 @@
+[t] {
+    background-image: url("../img/teams2.png");
+
+    width: 32px;
+    height: 32px;
+
+    display: inline-block;
+
+    margin-right: 13px; 
+
+    position: relative;
+
+    top: 10px;
+}
+
+
+[t=AAA]{ background-position: 0 0; width: 32px; height: 32px; } 
+[t=C9]{ background-position: 0 -134px; width: 32px; height: 32px; } 
+[t=CLG]{ background-position: 0 -268px; width: 32px; height: 32px; } 
+[t=COL]{ background-position: 0 -402px; width: 32px; height: 32px; } 
+[t=CST]{ background-position: 0 -536px; width: 32px; height: 32px; } 
+[t=CW]{ background-position: -134px 0px; width: 32px; height: 32px; } 
+[t=DB]{ background-position: -134px -134px; width: 32px; height: 32px; } 
+[t=DIG]{ background-position: -134px -268px; width: 32px; height: 32px; } 
+[t=EG]{ background-position: -134px -402px; width: 32px; height: 32px; } 
+[t=EL]{ background-position: -134px -536px; width: 32px; height: 32px; } 
+[t=FNC]{ background-position: -268px 0px; width: 32px; height: 32px; } 
+[t=GIA]{ background-position: -268px -134px; width: 32px; height: 32px; } 
+[t=GMB]{ background-position: -268px -268px; width: 32px; height: 32px; } 
+[t=GV]{ background-position: -268px -402px; width: 32px; height: 32px; } 
+[t=H2K]{ background-position: -268px -536px; width: 32px; height: 32px; } 
+[t=LD]{ background-position: -402px 0px; width: 32px; height: 32px; } 
+[t=MIL]{ background-position: -402px -134px; width: 32px; height: 32px; } 
+[t=MRN]{ background-position: -402px -402px; width: 32px; height: 32px; } 
+[t=MYM]{ background-position: -402px -536px; width: 32px; height: 32px; } 
+[t=NIP]{ background-position: -536px 0px; width: 32px; height: 32px; } 
+[t=NME]{ background-position: -536px -134px; width: 32px; height: 32px; } 
+[t=OG]{ background-position: -536px -268px; width: 32px; height: 32px; } 
+[t=ROC]{ background-position: -536px -402px; width: 32px; height: 32px; } 
+[t=SK]{ background-position: -536px -536px; width: 32px; height: 32px; } 
+[t=T8]{ background-position: -670px 0px; width: 32px; height: 32px; } 
+[t=TDK]{ background-position: -670px -134px; width: 32px; height: 32px; } 
+[t=TIP]{ background-position: -670px -268px; width: 32px; height: 32px; } 
+[t=TL]{ background-position: -670px -402px; width: 32px; height: 32px; } 
+[t=TSM]{ background-position: -670px -536px; width: 32px; height: 32px; } 
+[t=UOL]{ background-position: -804px 0px; width: 32px; height: 32px; } 
+[t=VES]{ background-position: -804px -134px; width: 32px; height: 32px; } 
+[t=WFX]{ background-position: -804px -268px; width: 32px; height: 32px; } 
+[t=XDG]{ background-position: -804px -402px; width: 32px; height: 32px; } 
+
+
+
+[c=aatrox] {
+    
+    background-position: 0px -0px
+}
+
+[c=ahri] {
+    
+    background-position: -35px -0px
+}
+
+[c=akali] {
+    
+    background-position: -70px -0px
+}
+
+[c=alistar] {
+    
+    background-position: -105px -0px
+}
+
+[c=amumu] {
+    
+    background-position: -140px -0px
+}
+
+[c=anivia] {
+    
+    background-position: -175px -0px
+}
+
+[c=annie] {
+    
+    background-position: -210px -0px
+}
+
+[c=ashe] {
+    
+    background-position: -245px -0px
+}
+
+[c=blitzcrank] {
+    
+    background-position: -280px -0px
+}
+
+[c=brand] {
+    
+    background-position: -315px -0px
+}
+
+[c=caitlyn] {
+    
+    background-position: 0px -35px
+}
+
+[c=cassiopeia] {
+    
+    background-position: -35px -35px
+}
+
+[c=chogath] {
+    
+    background-position: -70px -35px
+}
+
+[c=corki] {
+    
+    background-position: -105px -35px
+}
+
+[c=darius] {
+    
+    background-position: -140px -35px
+}
+
+[c=diana] {
+    
+    background-position: -175px -35px
+}
+
+[c=drmundo] {
+    
+    background-position: -245px -35px
+}
+
+[c=dr.mundo] {
+    
+    background-position: -245px -35px
+}
+
+[c=draven] {
+    
+    background-position: -210px -35px
+}
+
+[c=elise] {
+    
+    background-position: -280px -35px
+}
+
+[c=evelynn] {
+    
+    background-position: -315px -35px
+}
+
+[c=ezreal] {
+    
+    background-position: 0px -70px
+}
+
+[c=fiddlesticks] {
+    
+    background-position: -35px -70px
+}
+
+[c=fiora] {
+    
+    background-position: -70px -70px
+}
+
+[c=fizz] {
+    
+    background-position: -105px -70px
+}
+
+[c=galio] {
+    
+    background-position: -140px -70px
+}
+
+[c=gangplank] {
+    
+    background-position: -175px -70px
+}
+
+[c=garen] {
+    
+    background-position: -210px -70px
+}
+
+[c=gragas] {
+    
+    background-position: -245px -70px
+}
+
+[c=graves] {
+    
+    background-position: -280px -70px
+}
+
+[c=hecarim] {
+    
+    background-position: -315px -70px
+}
+
+[c=heimerdinger] {
+    
+    background-position: 0px -105px
+}
+
+[c=irelia] {
+    
+    background-position: -35px -105px
+}
+
+[c=janna] {
+    
+    background-position: -70px -105px
+}
+
+[c=jarvaniv] {
+    
+    background-position: -105px -105px
+}
+
+[c=jax] {
+    
+    background-position: -140px -105px
+}
+
+[c=jayce] {
+    
+    background-position: -175px -105px
+}
+
+[c=karma] {
+    
+    background-position: -210px -105px
+}
+
+[c=karthus] {
+    
+    background-position: -245px -105px
+}
+
+[c=kassadin] {
+    
+    background-position: -280px -105px
+}
+
+[c=katarina] {
+    
+    background-position: -315px -105px
+}
+
+[c=kayle] {
+    
+    background-position: 0px -140px
+}
+
+[c=kennen] {
+    
+    background-position: -35px -140px
+}
+
+[c=khazix] {
+    
+    background-position: -70px -140px
+}
+
+
+[c=kogmaw] {
+    
+    background-position: -105px -140px
+}
+
+[c=leblanc] {
+    
+    background-position: -140px -140px
+}
+
+[c=leesin] {
+    
+    background-position: -175px -140px
+}
+
+[c=leona] {
+    
+    background-position: -210px -140px
+}
+
+[c=lissandra] {
+    
+    background-position: -245px -140px
+}
+
+[c=lucian] {
+    
+    background-position: -280px -140px
+}
+
+[c=lulu] {
+    
+    background-position: -315px -140px
+}
+
+[c=lux] {
+    
+    background-position: 0px -175px
+}
+
+[c=malphite] {
+    
+    background-position: -35px -175px
+}
+
+[c=malzahar] {
+    
+    background-position: -70px -175px
+}
+
+[c=maokai] {
+    
+    background-position: -105px -175px
+}
+
+[c=masteryi] {
+    
+    background-position: -140px -175px
+}
+
+[c=missfortune] {
+    
+    background-position: -175px -175px
+}
+
+[c=monkeyking] {
+    
+    background-position: -210px -175px
+}
+[c=wukong] {
+    
+    background-position: -210px -175px
+}
+
+[c=mordekaiser] {
+    
+    background-position: -245px -175px
+}
+
+[c=morgana] {
+    
+    background-position: -280px -175px
+}
+
+[c=nami] {
+    
+    background-position: -315px -175px
+}
+
+[c=nasus] {
+    
+    background-position: 0px -210px
+}
+
+[c=nautilus] {
+    
+    background-position: -35px -210px
+}
+
+[c=nidalee] {
+    
+    background-position: -70px -210px
+}
+
+[c=nocturne] {
+    
+    background-position: -105px -210px
+}
+
+[c=nunu] {
+    
+    background-position: -140px -210px
+}
+
+[c=olaf] {
+    
+    background-position: -175px -210px
+}
+
+[c=orianna] {
+    
+    background-position: -210px -210px
+}
+
+[c=pantheon] {
+    
+    background-position: -245px -210px
+}
+
+[c=poppy] {
+    
+    background-position: -280px -210px
+}
+
+[c=quinn] {
+    
+    background-position: -315px -210px
+}
+
+[c=rammus] {
+    
+    background-position: 0px -245px
+}
+
+[c=renekton] {
+    
+    background-position: -35px -245px
+}
+
+[c=rengar] {
+    
+    background-position: -70px -245px
+}
+
+[c=riven] {
+    
+    background-position: -105px -245px
+}
+
+[c=rumble] {
+    
+    background-position: -140px -245px
+}
+
+[c=ryze] {
+    
+    background-position: -175px -245px
+}
+
+[c=sejuani] {
+    
+    background-position: -210px -245px
+}
+
+[c=shaco] {
+    
+    background-position: -245px -245px
+}
+
+[c=shen] {
+    
+    background-position: -280px -245px
+}
+
+[c=shyvana] {
+    
+    background-position: -315px -245px
+}
+
+[c=singed] {
+    
+    background-position: 0px -280px
+}
+
+[c=sion] {
+    
+    background-position: -35px -280px
+}
+
+[c=sivir] {
+    
+    background-position: -70px -280px
+}
+
+[c=skarner] {
+    
+    background-position: -105px -280px
+}
+
+[c=sona] {
+    
+    background-position: -140px -280px
+}
+
+[c=soraka] {
+    
+    background-position: -175px -280px
+}
+
+[c=swain] {
+    
+    background-position: -210px -280px
+}
+
+[c=syndra] {
+    
+    background-position: -245px -280px
+}
+
+[c=talon] {
+    
+    background-position: -280px -280px
+}
+
+[c=taric] {
+    
+    background-position: -315px -280px
+}
+
+[c=teemo] {
+    
+    background-position: 0px -315px
+}
+
+[c=thresh] {
+    
+    background-position: -35px -315px
+}
+
+[c=tristana] {
+    
+    background-position: -70px -315px
+}
+
+[c=trundle] {
+    
+    background-position: -105px -315px
+}
+
+[c=tryndamere] {
+    
+    background-position: -140px -315px
+}
+
+[c=twistedfate] {
+    
+    background-position: -175px -315px
+}
+
+[c=twitch] {
+    
+    background-position: -210px -315px
+}
+
+[c=udyr] {
+    
+    background-position: -245px -315px
+}
+
+[c=urgot] {
+    
+    background-position: -280px -315px
+}
+
+[c=varus] {
+    
+    background-position: -315px -315px
+}
+
+[c=vayne] {
+    
+    background-position: 0px -350px
+}
+
+[c=veigar] {
+    
+    background-position: -35px -350px
+}
+
+[c=vi] {
+    
+    background-position: -70px -350px
+}
+
+[c=viktor] {
+    
+    background-position: -105px -350px
+}
+
+[c=vladimir] {
+    
+    background-position: -140px -350px
+}
+
+[c=volibear] {
+    
+    background-position: -175px -350px
+}
+
+[c=warwick] {
+    
+    background-position: -210px -350px
+}
+
+[c=xerath] {
+    
+    background-position: -245px -350px
+}
+
+[c=xinzhao] {
+    
+    background-position: -280px -350px
+}
+
+[c=yorick] {
+    
+    background-position: -315px -350px
+}
+
+[c=zac] {
+    
+    background-position: 0px -385px
+}
+
+[c=zed] {
+    
+    background-position: -35px -385px
+}
+
+[c=ziggs] {
+    
+    background-position: -70px -385px
+}
+
+[c=zilean] {
+    
+    background-position: -105px -385px
+}
+
+[c=zyra] {
+    
+    background-position: -140px -385px
+}
+
+[c=jinx] {
+    
+    background-position: -175px -385px
+}
+
+[c=yasuo] {
+    
+    background-position: -210px -385px
+}

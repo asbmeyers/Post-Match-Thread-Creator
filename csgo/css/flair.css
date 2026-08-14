@@ -1,0 +1,151 @@
+/*.flair:after {
+    background: url(flairs.png) no-repeat scroll 16px 16px transparent;
+    display: inline-block;
+    height: 16px;
+    margin-left: 3px;
+    vertical-align: middle;
+    width: 16px;
+}*/
+.flair:after {
+    background: url(../img/flairs.png) no-repeat scroll 22px 20px transparent;
+    display: inline-block;
+    margin-left: 3px;
+    vertical-align: middle;
+	width: 22px;
+	height: 20px;
+	content: "";
+}
+
+.flair-aatrox:after{background-position:-1px -3px}
+.flair-ahri:after{background-position:-25px -3px}
+.flair-akali:after{background-position:-49px -3px}
+.flair-alistar:after{background-position:-73px -3px}
+.flair-amumu:after{background-position:-97px -3px}
+.flair-anivia:after{background-position:-121px -3px}
+.flair-annie:after{background-position:-145px -3px}
+.flair-ashe:after{background-position:-169px -3px}
+.flair-aurelionsol:after{background-position:-193px -3px}
+.flair-azir:after{background-position:-217px -3px}
+.flair-bard:after{background-position:-1px -27px}
+.flair-blitzcrank:after{background-position:-25px -27px}
+.flair-brand:after{background-position:-49px -27px}
+.flair-braum:after{background-position:-73px -27px}
+.flair-caitlyn:after{background-position:-97px -27px}
+.flair-cassiopeia:after{background-position:-121px -27px}
+.flair-chogath:after{background-position:-145px -27px}
+.flair-corki:after{background-position:-169px -27px}
+.flair-darius:after{background-position:-193px -27px}
+.flair-diana:after{background-position:-217px -27px}
+.flair-draven:after{background-position:-1px -51px}
+.flair-drmundo:after{background-position:-25px -51px}
+.flair-ekko:after{background-position:-49px -51px}
+.flair-elise:after{background-position:-73px -51px}
+.flair-evelynn:after{background-position:-97px -51px}
+.flair-ezreal:after{background-position:-121px -51px}
+.flair-fiddlesticks:after{background-position:-145px -51px}
+.flair-fiora:after{background-position:-169px -51px}
+.flair-fizz:after{background-position:-193px -51px}
+.flair-galio:after{background-position:-217px -51px}
+.flair-gangplank:after{background-position:-1px -75px}
+.flair-garen:after{background-position:-25px -75px}
+.flair-gnar:after{background-position:-49px -75px}
+.flair-gragas:after{background-position:-73px -75px}
+.flair-graves:after{background-position:-97px -75px}
+.flair-hecarim:after{background-position:-121px -75px}
+.flair-heimerdinger:after{background-position:-145px -75px}
+.flair-illaoi:after{background-position:-169px -75px}
+.flair-irelia:after{background-position:-193px -75px}
+.flair-ivern::after{background-position:-49px -315px}
+.flair-janna:after{background-position:-217px -75px}
+.flair-jarvaniv:after{background-position:-1px -99px}
+.flair-jax:after{background-position:-25px -99px}
+.flair-jayce:after{background-position:-49px -99px}
+.flair-jhin:after{background-position:-73px -99px}
+.flair-jinx:after{background-position:-97px -99px}
+.flair-kalista:after{background-position:-121px -99px}
+.flair-karma:after{background-position:-145px -99px}
+.flair-karthus:after{background-position:-169px -99px}
+.flair-kassadin:after{background-position:-193px -99px}
+.flair-katarina:after{background-position:-217px -99px}
+.flair-kayle:after{background-position:-1px -123px}
+.flair-kennen:after{background-position:-25px -123px}
+.flair-khazix:after{background-position:-49px -123px}
+.flair-kindred:after{background-position:-73px -123px}
+.flair-kled:after{background-position:-25px -315px}
+.flair-kogmaw:after{background-position:-97px -123px}
+.flair-leblanc:after{background-position:-121px -123px}
+.flair-leesin:after{background-position:-145px -123px}
+.flair-leona:after{background-position:-169px -123px}
+.flair-lissandra:after{background-position:-193px -123px}
+.flair-lucian:after{background-position:-217px -123px}
+.flair-lulu:after{background-position:-1px -147px}
+.flair-lux:after{background-position:-25px -147px}
+.flair-malphite:after{background-position:-49px -147px}
+.flair-malzahar:after{background-position:-73px -147px}
+.flair-maokai:after{background-position:-97px -147px}
+.flair-masteryi:after{background-position:-121px -147px}
+.flair-missfortune:after{background-position:-145px -147px}
+.flair-monkeyking:after{background-position:-169px -147px}
+.flair-mordekaiser:after{background-position:-193px -147px}
+.flair-morgana:after{background-position:-217px -147px}
+.flair-nami:after{background-position:-1px -171px}
+.flair-nasus:after{background-position:-25px -171px}
+.flair-nautilus:after{background-position:-49px -171px}
+.flair-nidalee:after{background-position:-73px -171px}
+.flair-nocturne:after{background-position:-97px -171px}
+.flair-nunu:after{background-position:-121px -171px}
+.flair-olaf:after{background-position:-145px -171px}
+.flair-orianna:after{background-position:-169px -171px}
+.flair-pantheon:after{background-position:-193px -171px}
+.flair-poppy:after{background-position:-217px -171px}
+.flair-quinn:after{background-position:-1px -195px}
+.flair-rammus:after{background-position:-25px -195px}
+.flair-reksai:after{background-position:-49px -195px}
+.flair-renekton:after{background-position:-73px -195px}
+.flair-rengar:after{background-position:-97px -195px}
+.flair-riven:after{background-position:-121px -195px}
+.flair-rumble:after{background-position:-145px -195px}
+.flair-ryze:after{background-position:-169px -195px}
+.flair-sejuani:after{background-position:-193px -195px}
+.flair-shaco:after{background-position:-217px -195px}
+.flair-shen:after{background-position:-1px -219px}
+.flair-shyvana:after{background-position:-25px -219px}
+.flair-singed:after{background-position:-49px -219px}
+.flair-sion:after{background-position:-73px -219px}
+.flair-sivir:after{background-position:-97px -219px}
+.flair-skarner:after{background-position:-121px -219px}
+.flair-sona:after{background-position:-145px -219px}
+.flair-soraka:after{background-position:-169px -219px}
+.flair-swain:after{background-position:-193px -219px}
+.flair-syndra:after{background-position:-217px -219px}
+.flair-tahmkench:after{background-position:-1px -243px}
+.flair-taliyah:after{background-position:-25px -243px}
+.flair-talon:after{background-position:-49px -243px}
+.flair-taric:after{background-position:-73px -243px}
+.flair-teemo:after{background-position:-97px -243px}
+.flair-thresh:after{background-position:-121px -243px}
+.flair-tristana:after{background-position:-145px -243px}
+.flair-trundle:after{background-position:-169px -243px}
+.flair-tryndamere:after{background-position:-193px -243px}
+.flair-twistedfate:after{background-position:-217px -243px}
+.flair-twitch:after{background-position:-1px -267px}
+.flair-udyr:after{background-position:-25px -267px}
+.flair-urgot:after{background-position:-49px -267px}
+.flair-varus:after{background-position:-73px -267px}
+.flair-vayne:after{background-position:-97px -267px}
+.flair-veigar:after{background-position:-121px -267px}
+.flair-velkoz:after{background-position:-145px -267px}
+.flair-vi:after{background-position:-169px -267px}
+.flair-viktor:after{background-position:-193px -267px}
+.flair-vladimir:after{background-position:-217px -267px}
+.flair-volibear:after{background-position:-1px -291px}
+.flair-warwick:after{background-position:-25px -291px}
+.flair-xerath:after{background-position:-49px -291px}
+.flair-xinzhao:after{background-position:-73px -291px}
+.flair-yasuo:after{background-position:-97px -291px}
+.flair-yorick:after{background-position:-121px -291px}
+.flair-zac:after{background-position:-145px -291px}
+.flair-zed:after{background-position:-169px -291px}
+.flair-ziggs:after{background-position:-193px -291px}
+.flair-zilean:after{background-position:-217px -291px}
+.flair-zyra:after{background-position:-1px -315px}
