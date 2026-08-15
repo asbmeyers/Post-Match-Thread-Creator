@@ -1097,7 +1097,7 @@ $(document).ready(function () {
 		}
 
 		var event_name_found = false;
-		//var match_type_found = false;
+		var match_type_found = false;
 		var vetos_finished = false;
 		var stats_finished = false;
 		var vrs_finished = false;
@@ -1116,13 +1116,14 @@ $(document).ready(function () {
 
 			// This is the line for the time of the match, the event name should be 2 lines after
 			if (!event_name_found && hltvTableLines[line].indexOf(":") != -1) {
-				$(this).closest('div.create').find('input.event-name' + i).val(hltvTableLines[line+2].trim());
+				$(this).closest('div.create').find('input.event-name').val(hltvTableLines[line+2].trim());
 				event_name_found = true;
 			}
 
-			// if (!match_type_found && hltvTableLines[line].indexOf("*") != -1) {
-			// 	$(this).close
-			// }
+			if (!match_type_found && hltvTableLines[line].indexOf("*") != -1) {
+			 	$(this).closest('div.veto-tab').find('input.match-type').val(titleCase(hltvTableLines[line].split('.')[0].split('*')[1].trim()));
+				match_type_found = true;
+			}
 
 			// '1.' is in the line - must be the first veto line
 			if (!vetos_finished && hltvTableLines[line].indexOf("1.") != -1) {
@@ -1182,7 +1183,7 @@ $(document).ready(function () {
 				console.log("initial player name:" + playerName);
 				var k = i;
 				hltvPlayerName = hltvTableLines[line-1].split("\'")[1];
-				while (!(playerName.trim().endsWith(hltvPlayerName)) && !(playerName.trim().endsWith(hltvPlayerName + " ♛"))) {
+				while (!(playerName.trim().endsWith(hltvPlayerName)) && !(playerName.trim().endsWith(hltvPlayerName + " ♛")) && !(playerName.trim().endsWith(hltvPlayerName + " 𖦏")) && !(playerName.trim().endsWith(hltvPlayerName + " ♛𖦏"))) {
 					if (k < 9) {
 						k += 1;
 					} else if (k == 9) {
@@ -1379,7 +1380,7 @@ $(document).ready(function () {
 				if (playerName == null) playerName = "";
 				console.log("initial player name:" + playerName);
 				var j = i;
-				while (!(playerName.trim().endsWith(hltvTableLines[line - 1])) && !(playerName.trim().endsWith(hltvTableLines[line - 1] + " ♛"))) {
+				while (!(playerName.trim().endsWith(hltvTableLines[line - 1])) && !(playerName.trim().endsWith(hltvTableLines[line - 1] + " ♛")) && !(playerName.trim().endsWith(hltvPlayerName[line - 1] + " 𖦏")) && !(playerName.trim().endsWith(hltvPlayerName[line - 1] + " ♛𖦏"))) {
 					if (j < 9) {
 						j += 1;
 					} else if (j == 9) {
@@ -1981,3 +1982,16 @@ function updateEventInfos(eventId) {
 	$('#liquipedia-link').val(eventInfos[eventId]["liquipedia"]);
 	$('#lolesports-link').val(eventInfos[eventId]["lolesports"]);
 };
+
+function titleCase(str) {
+	var splitStr = str.toLowerCase().split(' ');
+	for (var i = 0; i < splitStr.length; i++) {
+		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+		dashSplit = splitStr[i].split('-');
+		if (dashSplit.length == 2) {
+			dashSplit[1] = dashSplit[1].charAt(0).toUpperCase() + dashSplit[1].substring(1);
+			splitStr[i] = dashSplit.join('-');
+		}
+	}
+	return splitStr.join(' ');
+}

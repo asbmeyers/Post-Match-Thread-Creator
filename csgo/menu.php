@@ -37,9 +37,6 @@
 
 <div id="top-div">
 	<ul class="top-list inline">
-		<li>
-			<strong class="about-btn"><a href="../">Home</a></strong>
-		</li>
 		<?php if ($validUser) { ?>
 		<li>
 			<strong id="instructions-btn" onclick="showPopup('instructions-popup')">

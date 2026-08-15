@@ -115,6 +115,13 @@
 	<div id="panels">
 		<div class="veto-tab">
 
+			<div class="inline-block" data-tooltip="The URL for the HLTV match page." data-tooltip-position="top">
+				<input type="text" class="hltv-url" placeholder="HLTV URL" value="">
+			</div>
+			<div class="inline-block" data-tooltip="The Match Type (Grand Final, Upper Bracket Quarter-Final, etc.)." data-tooltip-position="top">
+				<input type="text" class="match-type" placeholder="Match Type" value="" style="width: 300px">
+			</div>
+
 			<div class="hltv-main-page">
 					<textarea class="hltvmaintable" placeholder="HLTV Page Copy and Paste (not link, ctrl-a)" style="width: 890px; margin-bottom: 10px;"></textarea>
 			</div>
@@ -1155,6 +1162,8 @@ Team | Rank | Diff | Total
 |%P8o|%K8-%D8|%ADR8|%SW8|%RA8|
 |%P9o|%K9-%D9|%ADR9|%SW9|%RA9|
 |%PXo|%KX-%DX|%ADRX|%SWX|%RAX|
+
+#[HLTV Match Page](%hltv-url)
 
 </textarea>
 
