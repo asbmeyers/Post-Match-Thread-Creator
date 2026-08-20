@@ -432,6 +432,11 @@ select {
     margin-right: 4px;
 }
 
+.vrs-info {
+    float: left;
+    margin-left: 25%;
+}
+
 .side-scores,
 .teams-input {
     margin-left: 10%;
@@ -442,6 +447,7 @@ select {
 .picks,
 .scores,
 .scores-adr,
+.scores-swing,
 .scores-rating {
     float: left;
 }
@@ -450,16 +456,33 @@ select {
 .picks input,
 .scores input,
 .scores-adr input,
+.scores-swing input,
+.scores-rating input,
 .side-scores input {
     margin-bottom: 5px;
+}
+
+.hltv-urla {
+    margin-left: -30px;
+}
+
+.match-type {
+    width: 250px;
 }
 
 .side-scores input {
     width: 39px;
 }
 
+.hltv-main-page {
+    margin-bottom: 10px;
+}
+
+.hltvmaintable {
+    width: 410px;
+}
+
 .main-teams {
-    margin-left: -28px;
     padding-bottom: 10px;
 }
 
@@ -470,7 +493,7 @@ select {
 
 .maps-left {
     float: left;
-    margin-left: 25%;
+    margin-left: 27%;
     margin-right: 4px;
 }
 
@@ -553,25 +576,28 @@ div.bans div span {
 }
 
 .scores-adr input {
-    width: 42px;
-    margin-bottom: 5px;
+    width: 40px;
+}
+
+.scores-swing input {
+    width: 40px;
 }
 
 .scores-rating input {
     width: 32px;
-    margin-bottom: 5px;
 }
 
 #output-tab {
     width: 100%;
 }
 
-#output-tab textarea {
+#output-textarea {
     height: 400px;
 }
 
 button.btn {
     padding: 10px 25px;
+    margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
     text-decoration: none;
@@ -657,7 +683,7 @@ input[readonly] {
     border: 0;
     overflow: hidden;
     /* IE 6/7 fallback */
-    *text-indent: -9999px;
+    text-indent: -9999px;
 }
 
 .ir:before {
@@ -750,7 +776,7 @@ input[readonly] {
  */
 
 .clearfix {
-    *zoom: 1;
+    zoom: 1;
 }
 
 
@@ -834,7 +860,7 @@ input[readonly] {
     }
 }
 
-#instructions-popup {
+#instructions-popup, #rules-popup {
     text-align: center;
 }
 
@@ -897,6 +923,10 @@ p.font-size-large {
 
 .white_content ul li {
     text-align: left;
+}
+
+ol li {
+    text-align:left;
 }
 
 
@@ -1075,7 +1105,7 @@ ul.centered li {
 /** Night mode **/
 
 body.night {
-    background-color: #343434;
+    background-color: #000000;
     color: #fff;
 }
 
@@ -1091,7 +1121,7 @@ body.night #container {
 body.night input,
 body.night select,
 body.night textarea {
-    background-color: #A3A3A3;
+    background-color: #383838;
     color: #fff;
 }
 
@@ -1117,8 +1147,8 @@ body.night #tabList li {
 
 body.night #tabList li.selected,
 body.night #tabList li:hover {
-    background-color: #eee;
-    color: #333;
+    background-color: #272727;
+    color: #ffffff;
 }
 
 body.night .teams>div:first-of-type,

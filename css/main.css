@@ -834,7 +834,7 @@ input[readonly] {
     }
 }
 
-#instructions-popup {
+#instructions-popup, #rules-popup {
     text-align: center;
 }
 

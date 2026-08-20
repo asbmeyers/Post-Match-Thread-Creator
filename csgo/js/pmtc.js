@@ -50,23 +50,23 @@ $(document).ready(function () {
 	$("#pmt-checkbox").prop('checked', "true"==localStorage.getItem("pmt-checkbox"));
 
 	// inputs with class
-	for (i = 2; i <= 6; i++) {
-		$('#panels > .main:nth-child(' + i + ') select').each(function (e) {
+	for (i = 1; i <= 6; i++) {
+		$('#panels > div:nth-child(' + i + ') select').each(function (e) {
 			var key = i + "_" + $(this).attr('class');
 			var value = localStorage.getItem(key);
 			if (value !== null && value !== '' && value !== 'null') {
 				$(this).append('<option selected="selected" value="' + value + '">' + value + '</option>');
 			}
 		});
-		$('#panels > .main:nth-child(' + i + ') .team-pps:nth-child(1) .players').each(function (e) {
+		$('#panels > div:nth-child(' + i + ') .team-pps:nth-child(1) .players').each(function (e) {
 			$(this).sortable();
 		});
 
-		$('#panels > .main:nth-child(' + i + ') .team-pps:nth-child(2) .players').each(function (e) {
+		$('#panels > div:nth-child(' + i + ') .team-pps:nth-child(2) .players').each(function (e) {
 			$(this).sortable();
 		});
 
-		$('#panels > .main:nth-child(' + i + ') .drag-counter').each(function (e) {
+		$('#panels > div:nth-child(' + i + ') .drag-counter').each(function (e) {
 			var key = i + "drag_counter";
 			var val = localStorage.getItem(key);
 			if (val !== null && val !== undefined && val !== '') {
@@ -74,30 +74,32 @@ $(document).ready(function () {
 			}
 		});	
 		
-		$("#panels > div:nth-child(" + i + ") #left-side-checkbox").prop('checked', "true"==localStorage.getItem(i + "left-side-checkbox"));
-		$("#panels > div:nth-child(" + i + ") #simple-scores-checkbox").prop('checked', "true"==localStorage.getItem(i + "simple-scores-checkbox"));
-		$("#panels > div:nth-child(" + i + ") #simple-stats-checkbox").prop('checked', "true"==localStorage.getItem(i + "simple-stats-checkbox"));
-		
+		if (i > 1) {
+			$("#panels > div:nth-child(" + i + ") #left-side-checkbox").prop('checked', "true"==localStorage.getItem(i + "left-side-checkbox"));
+			$("#panels > div:nth-child(" + i + ") #simple-scores-checkbox").prop('checked', "true"==localStorage.getItem(i + "simple-scores-checkbox"));
+			$("#panels > div:nth-child(" + i + ") #simple-stats-checkbox").prop('checked', "true"==localStorage.getItem(i + "simple-stats-checkbox"));
+			
 
-		$('#panels > .main:nth-child(' + i + ') input').each(function (e) {
-			var key = i + "_" + $(this).attr('class');
-			var value = localStorage.getItem(key);
-			if (value !== null) {
-				$(this).val(value);
-				var myParent = $(this).parent();
-				if (myParent.is('span') && $(this).attr('list') && $(this).attr('list') == 'championz') {
-					myParent.removeClass().addClass("flair flair-" + $(this).val().toLowerCase().KWS());
+			$('#panels > .main:nth-child(' + i + ') input').each(function (e) {
+				var key = i + "_" + $(this).attr('class');
+				var value = localStorage.getItem(key);
+				if (value !== null) {
+					$(this).val(value);
+					var myParent = $(this).parent();
+					if (myParent.is('span') && $(this).attr('list') && $(this).attr('list') == 'championz') {
+						myParent.removeClass().addClass("flair flair-" + $(this).val().toLowerCase().KWS());
+					}
 				}
-			}
-		});
-		
-		$('#panels > .main:nth-child(' + i + ') textarea').each(function (e) {
-			var key = i + "_" + $(this).attr('class');
-			var value = localStorage.getItem(key);
-			if (value !== null) {
-				$(this).val(value);
-			}
-		});
+			});
+			
+			$('#panels > .main:nth-child(' + i + ') textarea').each(function (e) {
+				var key = i + "_" + $(this).attr('class');
+				var value = localStorage.getItem(key);
+				if (value !== null) {
+					$(this).val(value);
+				}
+			});
+		}
 	}
 	
 	$('#panels > div:nth-child(7) input').each(function (e) {
@@ -167,9 +169,11 @@ $(document).ready(function () {
 		
 		var eName = $('#event-name').val();
 		var eLink = $('#live-thread-link').val();
+		var checked = $('#live-thread-checkbox').val();
 		document.getElementById("create").reset();
 		$('#event-name').val(eName);
 		$('#live-thread-link').val(eLink);
+		$('#live-thread-checkbox').val(checked);
 		
 	});
 	
@@ -340,15 +344,111 @@ $(document).ready(function () {
 			//} else if (gameWinner == resultInput.data("red-team")) {
 		}
 
+		var team1GID = $("#panels > div:nth-child(1) .maint1").val();
+		var team2GID = $("#panels > div:nth-child(1) .maint2").val();
+
+		// If the team isn't already in the database, add them to the database
+		if (!TEAMS[team1GID])
+			TEAMS[team1GID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1GID, "HLTV Name":team1GID, "Name":team1GID, 
+							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", 
+							"Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", 
+							"YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""};
+		if (!TEAMS[team2GID])
+			TEAMS[team2GID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2GID, "HLTV Name":team2GID, "Name":team2GID, 
+							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", 
+							"Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", 
+							"YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""};
+
+		// event name
+		data[0]["event-name"] = {};
+		data[0]["event-name"].value = $("#event-name").val();
+
+		// Event Settings
+		if (EVENTS[data[0]["event-name"].value]) {
+
+			// Flag for event location
+			data[0]["event-flag"] = {};
+			data[0]["event-flag"].value = Flagify(EVENTS[data[0]["event-name"].value]["Flag"]);
+
+			// Name of city / online region of event
+			city = EVENTS[data[0]["event-name"].value]["City"];
+			data[0]["event-city"] = {};
+			data[0]["event-city"].value = city
+
+			// Prize pool
+			prize = EVENTS[data[0]["event-name"].value]["Prize"];
+			if (prize == '' || prize == null) prize = "$0";
+			data[0]["event-prize"] = {};
+			data[0]["event-prize"].value = prize;
+
+			// Event type (LAN or Online)
+			data[0]["event-type"] = {};
+			if (city == "North America" || city == "South America" || city == "Europe" || city == "Asia" || city == "Oceania" || city == "Africa") {
+				data[0]["event-type"].value = "Online";
+			} else {
+				data[0]["event-type"].value = "LAN";
+			}
+
+			// Event HLTV Page
+			data[0]["event-hltv"] = {};
+			data[0]["event-hltv"].value = EVENTS[data[0]["event-name"].value]["HLTV"];
+
+			// Event Liquipedia Page
+			data[0]['event-liquipedia'] = {};
+			data[0]['event-liquipedia'] = EVENTS[data[0]["event-name"].value]["Liquipedia"];
+		}
+
+		// Match type
+		data[0]["match-type"] = {};
+		data[0]["match-type"].value = $("#match-type").val();
+
+		// HLTV url
+		data[0]["hltv-url"] = {};
+		data[0]["hltv-url"].value = $('#hltv-url').val();
+
+		// live thread link
+		data[0]["live-thread-link"] = {};
+		data[0]["live-thread-link"].value = $("#live-thread-link").val();
+
+		// Team White
+		data[0]["IconWTA1"] = {};
+		data[0]["IconWTA1"].value = IconifyW(team1GID);
+		data[0]["IconWTA2"] = {};
+		data[0]["IconWTA2"].value = IconifyW(team2GID);
+		data[0]["IconWT1"] = {};
+		data[0]["IconWT1"].value = IconifyW(team1GID);
+		data[0]["IconWT2"] = {};
+		data[0]["IconWT2"].value = IconifyW(team2GID);
+
+		data[0]["IconVWTA1"] = {};
+		data[0]["IconVWTA1"].value = IconifyVetoW(team1GID);
+		data[0]["IconVWTA2"] = {};
+		data[0]["IconVWTA2"].value = IconifyVetoW(team2GID);
+
+		// Team1 Initials
+		data[0]["Team1Initials"] = {};
+		data[0]["Team1Initials"].value = Initialsa(team1GID);
+
+		// Team2 Initials
+		data[0]["Team2Initials"] = {};
+		data[0]["Team2Initials"].value = Initialsa(team2GID);
+
+		data[0]["IconStatsT1"] = {};
+		data[0]["IconStatsT1"].value = IconifyStats(team1GID);
+		data[0]["IconStatsT2"] = {};
+		data[0]["IconStatsT2"].value = IconifyStats(team2GID);
+
 		for (i = 1; i < 6; i++) {
 			// check if this tab has teams filled
-			var team1ID = $("#panels > div:nth-child(" + (i + 1) + ") .T1").val();
-			var team2ID = $("#panels > div:nth-child(" + (i + 1) + ") .T2").val();
-			var team1GID = $("#panels > div:nth-child(1) .maint1").val();
-			var team2GID = $("#panels > div:nth-child(1) .maint2").val();
-			if (team1ID != "" && team2ID != "") {
+			var team1ID = $("#panels > div:nth-child(" + i + ") .T1").val();
+			var team2ID = $("#panels > div:nth-child(" + i + ") .T2").val();
+
+			if (!team1ID) team1ID = $("#panels > div:nth-child(" + i + ") .maint1").val();
+			if (!team2ID) team2ID = $("#panels > div:nth-child(" + i + ") .maint2").val();
+
+			if (team1ID && team2ID && team1ID != "" && team2ID != "") {
 				data[i] = {};
-				$("#panels > div:nth-child(" + (i + 1) + ") input").each(function (e) {
+				$("#panels > div:nth-child(" + (i) + ") input").each(function (e) {
 					if (!$(this).attr("o")) {
 						var inputClass = $(this).attr("class");
 						data[i][inputClass] = {};
@@ -386,14 +486,6 @@ $(document).ready(function () {
 					}
 				});
 				var inputVal = "";
-
-				// event name
-				data[i]["event-name"] = {};
-				data[i]["event-name"].value = $("#event-name").val();
-
-				// live thread link
-				data[i]["live-thread-link"] = {};
-				data[i]["live-thread-link"].value = $("#live-thread-link").val();
 				
 				// Team1 Initials
 				data[i]["Team1Initials"] = {};
@@ -404,208 +496,89 @@ $(document).ready(function () {
 				data[i]["Team2Initials"].value = Initialsa(team2ID);
 
 				// Team White
-				data[i]["IconWTA1"] = {};
-				data[i]["IconWTA1"].value = IconifyW(team1GID);
-				data[i]["IconWTA2"] = {};
-				data[i]["IconWTA2"].value = IconifyW(team2GID);
 				data[i]["IconWT1"] = {};
 				data[i]["IconWT1"].value = IconifyW(team1ID);
 				data[i]["IconWT2"] = {};
 				data[i]["IconWT2"].value = IconifyW(team2ID);
-
-				data[i]["IconVWTA1"] = {};
-				data[i]["IconVWTA1"].value = IconifyVetoW(team1GID);
-				data[i]["IconVWTA2"] = {};
-				data[i]["IconVWTA2"].value = IconifyVetoW(team2GID);
 				
 				data[i]["IconStatsT1"] = {};
 				data[i]["IconStatsT1"].value = IconifyStats(team1ID);
 				data[i]["IconStatsT2"] = {};
 				data[i]["IconStatsT2"].value = IconifyStats(team2ID);
 
-				// series result
-				inputVal = $("#series-result").val();
-				if (inputVal == null || inputVal == '') {
-					inputVal = '0-0';
-				}
-				data[i]["series-result"] = {};
-				data[i]["series-result"].value = inputVal;
-				
-				//winner and loser name/icon
-				inputVal = inputVal.split("-");
-				if (Number(inputVal[1]) > Number(inputVal[0])) {
-					data[i]["IconWinner"] = {};
-					data[i]["IconWinner"].value = Iconify(team2GID);
-					data[i]["WinnerName"] = {};
-					data[i]["WinnerName"].value = team2GID
-					data[i]["IconLoser"] = {};
-					data[i]["IconLoser"].value = Iconify(team1GID);
-					data[i]["LoserName"] = {};
-					data[i]["LoserName"].value = team1GID
-				} else {
-					data[i]["IconWinner"] = {};
-					data[i]["IconWinner"].value = Iconify(team1GID);
-					data[i]["WinnerName"] = {};
-					data[i]["WinnerName"].value = team1GID
-					data[i]["IconLoser"] = {};
-					data[i]["IconLoser"].value = Iconify(team2GID);
-					data[i]["LoserName"] = {};
-					data[i]["LoserName"].value = team2GID
-				}
-					
-
-				// series context
-				inputVal = $("#winners-context").val().trim();
-				if ($("#winner-next-opponent").val() != "") {
-					if (inputVal != '') {
-						inputVal += ' and ';
+				if (i > 1) {
+					// winner of each game
+					inputVal = $("#panels > div:nth-child(" + i + ") .winner").val();
+					if (inputVal == null || inputVal == '') {
+						inputVal = 'tbd';
 					}
-					try { 
-						inputVal += "will face " + Iconify($("#winner-next-opponent").val()) + " " + $("#winner-next-opponent").val();
-					} catch {
-						inputVal += "will face " + $("#winner-next-opponent").val();
-					}
+					data[i]["winner"] = {};
+					data[i]["winner"].value = inputVal;
 
-					if ($("#winner-next-opponent2").val() != "") {
-						try {
-							inputVal += " or " + Iconify($("#winner-next-opponent2").val()) + " " + $("#winner-next-opponent2").val();
-						} catch {
-							inputVal += " or " + $("#winner-next-opponent2").val();
+					// map of each game
+					inputVal = $("#panels > div:nth-child(" + i + ") .game-map").val();
+					if (inputVal == null || inputVal == '') {
+						inputVal = 'tbd';
+					}
+					data[0]["pergame-map" + (i-1)] = {};
+					data[0]["pergame-map" + (i-1)].value = inputVal;
+
+					// match-history link of each game
+					inputVal = $("#panels > div:nth-child(" + i + ") .match-history").val();
+					if (inputVal == null || inputVal == '') {
+						inputVal = 'https://www.hltv.org/stats/matches';
+					}
+					data[i]["match-history"] = {};
+					data[i]["match-history"].value = inputVal;
+
+					// game number
+					data[i]["gameX"] = {};
+					data[i]["gameX"].value = i;
+
+					//Total rounds
+					var roundCounterTemp = 0;
+					data[i]["LRounds" + (i-1)] = {};
+					data[i]["LRoundst"] = {};
+					for (var c = 1; c <= 12; c++) {
+						var LName = "";
+						if (c < 10) {
+							LName = c;
+						} else {
+							LName = "X" + (c % 10);
 						}
+
+						if (data[i]["L" + LName].value != null && data[i]["L" + LName].value != '')
+							roundCounterTemp += parseInt(data[i]["L" + LName].value);
+						else
+							roundCounterTemp += 0;
+							
 					}
-				} else if ($("#winner-next-opponent2").val() != "") {
-					if (inputVal != '') {
-						inputVal += ' and ';
-					}
-					try {
-						inputVal += "will face " + Iconify($("#winner-next-opponent2").val()) + " " + $("#winner-next-opponent2").val();
-					} catch {
-						inputVal += "will face " + $("#winner-next-opponent2").val();
-					}
-				}
-				data[i]["series-context1"] = {};
-				data[i]["series-context1"].value = inputVal;
-				
-				inputVal = $("#losers-context").val().trim();
-				if ($("#loser-next-opponent").val() != "") {
-					if (inputVal != '') {
-						inputVal += ' and ';
-					}
-					try {
-						inputVal += "will face " + Iconify($("#loser-next-opponent").val()) + " " + $("#loser-next-opponent").val();
-					} catch {
-						inputVal += "will face " + $("#loser-next-opponent").val();
-					}
-					if ($("#loser-next-opponent2").val() != "") {
-						try {
-							inputVal += " or " + Iconify($("#loser-next-opponent2").val()) + " " + $("#loser-next-opponent2").val();
-						} catch {
-							inputVal += " or " + $("#loser-next-opponent2").val();
+					data[i]["LRounds" + (i-1)].value = roundCounterTemp;
+					data[i]["LRoundst"].value = roundCounterTemp;
+
+					roundCounterTemp = 0;
+					data[i]["RRounds" + (i-1)] = {};
+					data[i]["RRoundst"] = {};
+					for (var c = 1; c <= 12; c++) {
+						var RName = "";
+						if (c < 10) {
+							RName = c;
+						} else {
+							RName = "X" + (c % 10);
 						}
+
+						if (data[i]["R" + RName].value != null && data[i]["R" + RName].value != '')
+							roundCounterTemp += parseInt(data[i]["R" + RName].value);
+						else
+							roundCounterTemp += 0;
 					}
-				} else if ($("#loser-next-opponent2").val() != "") {
-					if (inputVal != '') {
-						inputVal += ' and ';
-					}
-					try {
-						inputVal += "will face " + Iconify($("#loser-next-opponent2").val()) + " " + $("#loser-next-opponent2").val();
-					} catch {
-						inputVal += "will face " + $("#loser-next-opponent2").val();
-					}
+					data[i]["RRounds" + (i-1)].value = roundCounterTemp;
+					data[i]["RRoundst"].value = roundCounterTemp;
 				}
-				data[i]["series-context2"] = {};
-				data[i]["series-context2"].value = inputVal;
-
-				// T1 for the series result
-				inputVal = team1GID;
-				if (inputVal == null || inputVal == '') {
-					inputVal = 'tbd';
-				}
-				data[i]["Team1name"] = {};
-				data[i]["Team1name"].value = inputVal;
-				
-				data[i]["Team1Default"] = {};
-				data[i]["Team1Default"].value = inputVal.replace(" ", " ^");
-
-				// T2 for the series result
-				inputVal = team2GID;
-				if (inputVal == null || inputVal == '') {
-					inputVal = 'tbd';
-				}
-				data[i]["Team2name"] = {};
-				data[i]["Team2name"].value = inputVal;
-
-				// winner of each game
-				inputVal = $("#panels > div:nth-child(" + i + ") .winner").val();
-				if (inputVal == null || inputVal == '') {
-					inputVal = 'tbd';
-				}
-				data[i]["winner"] = {};
-				data[i]["winner"].value = inputVal;
-
-				// map of each game
-				inputVal = $("#panels > div:nth-child(" + (i + 1) + ") .game-map").val();
-				if (inputVal == null || inputVal == '') {
-					inputVal = 'tbd';
-				}
-				data[i]["pergame-map" + i] = {};
-				data[i]["pergame-map" + i].value = inputVal;
-
-				// match-history link of each game
-				inputVal = $("#panels > div:nth-child(" + (i + 1) + ") .match-history").val();
-				if (inputVal == null || inputVal == '') {
-					inputVal = 'https://www.hltv.org/stats/matches';
-				}
-				data[i]["match-history"] = {};
-				data[i]["match-history"].value = inputVal;
-
-				// game number
-				data[i]["gameX"] = {};
-				data[i]["gameX"].value = i;
-
-				//Total rounds
-				var roundCounterTemp = 0;
-				data[i]["LRounds" + i] = {};
-				data[i]["LRoundst"] = {};
-				for (var c = 1; c <= 12; c++) {
-					var LName = "";
-					if (c < 10) {
-						LName = c;
-					} else {
-						LName = "X" + (c % 10);
-					}
-
-					if (data[i]["L" + LName].value != null && data[i]["L" + LName].value != '')
-						roundCounterTemp += parseInt(data[i]["L" + LName].value);
-					else
-						roundCounterTemp += 0;
-						
-				}
-				data[i]["LRounds" + i].value = roundCounterTemp;
-				data[i]["LRoundst"].value = roundCounterTemp;
-
-				roundCounterTemp = 0;
-				data[i]["RRounds" + i] = {};
-				data[i]["RRoundst"] = {};
-				for (var c = 1; c <= 12; c++) {
-					var RName = "";
-					if (c < 10) {
-						RName = c;
-					} else {
-						RName = "X" + (c % 10);
-					}
-
-					if (data[i]["R" + RName].value != null && data[i]["R" + RName].value != '')
-						roundCounterTemp += parseInt(data[i]["R" + RName].value);
-					else
-						roundCounterTemp += 0;
-				}
-				data[i]["RRounds" + i].value = roundCounterTemp;
-				data[i]["RRoundst"].value = roundCounterTemp;
 
 				var index = 0;
 				var playerNumber = 0;
-				$("#panels > div:nth-child(" + (i + 1) + ") [o]").each(function () {
+				$("#panels > div:nth-child(" + (i) + ") [o]").each(function () {
 					index++;
 					if (index < 6) { //team 1 (players 1-5)
 						playerNumber = index;
@@ -618,6 +591,12 @@ $(document).ready(function () {
 						data[i]["P" + playerNumber] = {};
 						data[i]["P" + playerNumber].value = Flagify($(this).val());
 						data[i]["P" + playerNumber].order = $(this).attr("o");
+					} else if (index == 6) {
+						data[i]["C1"] = {};
+						data[i]["C1"].value = Flagify($(this).val());
+					} else if (index == 12) {
+						data[i]["C2"] = {};
+						data[i]["C2"].value = Flagify($(this).val());
 					}
 				});
 				
@@ -625,11 +604,11 @@ $(document).ready(function () {
 				var team2Rating = 0;
 				for (var c = 1; c <= 10; c++) {
 					if (c < 6) {
-						team1Rating += parseFloat($("#panels > div:nth-child(" + (i + 1) + ") .RA" + c).val());
+						team1Rating += parseFloat($("#panels > div:nth-child(" + i + ") .RA" + c).val());
 					} else if (c < 10) {
-						team2Rating += parseFloat($("#panels > div:nth-child(" + (i + 1) + ") .RA" + c).val());
+						team2Rating += parseFloat($("#panels > div:nth-child(" + i + ") .RA" + c).val());
 					} else {
-						team2Rating += parseFloat($("#panels > div:nth-child(" + (i + 1) + ") .RAX").val());
+						team2Rating += parseFloat($("#panels > div:nth-child(" + i + ") .RAX").val());
 					}
 				}
 				
@@ -638,7 +617,7 @@ $(document).ready(function () {
 				data[i]["RAT2"] = {};
 				data[i]["RAT2"].value = (team2Rating / 5.0).toFixed(2);
 				
-				$("#panels > div:nth-child(" + (i + 1) + ") [o]").each(function () {
+				$("#panels > div:nth-child(" + i + ") [o]").each(function () {
 					index++
 					if (index < 6) { //team 1
 						team1Rating += index;
@@ -646,128 +625,239 @@ $(document).ready(function () {
 						team2Rating += index;
 					}
 				});
-
-				if (TEAMS[team1GID]) {
-
-					T1ut = {
-						string: $("#panels > div:nth-child(1) .maint1").val()
-					}
-
-					T1ut.wk = "";
-					T1ut.hl = "";
-					T1ut.os = "";
-					T1ut.tw = "";
-					T1ut.fb = "";
-					T1ut.ig = "";
-					T1ut.vk = "";
-					T1ut.wb = "";
-					T1ut.yt = "";
-					T1ut.tv = "";
-					T1ut.sb = "";
-
-					if (TEAMS[T1ut.string]["Wiki"] != "") {
-						T1ut.wk = " | [Liquipedia](" + TEAMS[T1ut.string]["Wiki"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["HLTV"] != "") {
-						T1ut.hl = " | [HLTV](" + TEAMS[T1ut.string]["HLTV"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["Official Site"] != "") {
-						T1ut.os = " | [Official Site](" + TEAMS[T1ut.string]["Official Site"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["Twitter"] != "") {
-						T1ut.tw = " | [Twitter](" + TEAMS[T1ut.string]["Twitter"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["Facebook"] != "") {
-						T1ut.fb = " | [Facebook](" + TEAMS[T1ut.string]["Facebook"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["Instagram"] != "") {
-						T1ut.ig = " | [Instagram](" + TEAMS[T1ut.string]["Instagram"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["VK"] != "") {
-						T1ut.vk = " | [VK](" + TEAMS[T1ut.string]["VK"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["Weibo"] != "") {
-						T1ut.wb = " | [Weibo](" + TEAMS[T1ut.string]["Weibo"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["YouTube"] != "") {
-						T1ut.yt = " | [YouTube](" + TEAMS[T1ut.string]["YouTube"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["Twitch"] != "") {
-						T1ut.tv = " | [Twitch](" + TEAMS[T1ut.string]["Twitch"] + ")" || "";
-					}
-					if (TEAMS[T1ut.string]["Subreddit"] != "") {
-						T1ut.sb = " | [Subreddit](" + TEAMS[T1ut.string]["Subreddit"] + ")" || "";
-					}
-
-					data[i]["team1info"] = {
-						value: Iconify(team1GID) + " **" + team1GID + "**" + T1ut.wk + T1ut.hl + T1ut.os + T1ut.tw + T1ut.fb + T1ut.ig + T1ut.vk + T1ut.wb + T1ut.yt + T1ut.tv + T1ut.sb
-					};
-				}
-
-				if (TEAMS[team2GID]) {
-
-					T2ut = {
-						string: $("#panels > div:nth-child(1) .maint2").val()
-					}
-
-					T2ut.wk = "";
-					T2ut.hl = "";
-					T2ut.os = "";
-					T2ut.tw = "";
-					T2ut.fb = "";
-					T2ut.ig = "";
-					T2ut.vk = "";
-					T2ut.wb = "";
-					T2ut.yt = "";
-					T2ut.tv = "";
-					T2ut.sb = "";
-
-					if (TEAMS[T2ut.string]["Wiki"] != "") {
-						T2ut.wk = " | [Liquipedia](" + TEAMS[T2ut.string]["Wiki"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["HLTV"] != "") {
-						T2ut.hl = " | [HLTV](" + TEAMS[T2ut.string]["HLTV"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["Official Site"] != "") {
-						T2ut.os = " | [Official Site](" + TEAMS[T2ut.string]["Official Site"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["Twitter"] != "") {
-						T2ut.tw = " | [Twitter](" + TEAMS[T2ut.string]["Twitter"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["Facebook"] != "") {
-						T2ut.fb = " | [Facebook](" + TEAMS[T2ut.string]["Facebook"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["Instagram"] != "") {
-						T2ut.ig = " | [Instagram](" + TEAMS[T2ut.string]["Instagram"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["VK"] != "") {
-						T2ut.vk = " | [VK](" + TEAMS[T2ut.string]["VK"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["Weibo"] != "") {
-						T2ut.wb = " | [Weibo](" + TEAMS[T2ut.string]["Weibo"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["YouTube"] != "") {
-						T2ut.yt = " | [YouTube](" + TEAMS[T2ut.string]["YouTube"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["Twitch"] != "") {
-						T2ut.tv = " | [Twitch](" + TEAMS[T2ut.string]["Twitch"] + ")" || "";
-					}
-					if (TEAMS[T2ut.string]["Subreddit"] != "") {
-						T2ut.sb = " | [Subreddit](" + TEAMS[T2ut.string]["Subreddit"] + ")" || "";
-					}
-					data[i]["team2info"] = {
-						value: Iconify(team2GID) + " **" + team2GID + "**" + T2ut.wk + T2ut.hl + T2ut.os + T2ut.tw + T2ut.fb + T2ut.ig + T2ut.vk + T2ut.wb + T2ut.yt + T2ut.tv + T2ut.sb
-					};
-				}
-			} else {
-				var inputVal = $("#panels > div:nth-child(" + (i + 1) + ") .game-map").val();
+			} else if (i > 1) {
+				var inputVal = $("#panels > div:nth-child(" + i + ") .game-map").val();
 				if (inputVal != null && inputVal != '') {
-					data[i] = {};
-					data[i]["pergame-map" + i] = {};
-					console.log("per-gamemap" + i + " = " + inputVal);
-					data[i]["pergame-map" + i].value = inputVal;
+					data[0]["pergame-map" + (i-1)] = {};
+					console.log("pergame-map" + (i-1) + " = " + inputVal);
+					data[0]["pergame-map" + (i-1)].value = inputVal;
 				}
 			}
+		}
+
+		// series result
+		inputVal = $("#series-result").val();
+		if (inputVal == null || inputVal == '') {
+			inputVal = '0-0';
+		}
+		data[0]["series-result"] = {};
+		data[0]["series-result"].value = inputVal;
+		
+		//winner and loser name/icon
+		inputVal = inputVal.split("-");
+		if (Number(inputVal[1]) > Number(inputVal[0])) {
+			data[0]["IconWinner"] = {};
+			data[0]["IconWinner"].value = Iconify(team2GID);
+			data[0]["WinnerName"] = {};
+			data[0]["WinnerName"].value = team2GID
+			data[0]["IconLoser"] = {};
+			data[0]["IconLoser"].value = Iconify(team1GID);
+			data[0]["LoserName"] = {};
+			data[0]["LoserName"].value = team1GID
+		} else {
+			data[0]["IconWinner"] = {};
+			data[0]["IconWinner"].value = Iconify(team1GID);
+			data[0]["WinnerName"] = {};
+			data[0]["WinnerName"].value = team1GID
+			data[0]["IconLoser"] = {};
+			data[0]["IconLoser"].value = Iconify(team2GID);
+			data[0]["LoserName"] = {};
+			data[0]["LoserName"].value = team2GID
+		}
+			
+
+		// series context
+		inputVal = $("#winners-context").val().trim();
+		if ($("#winner-next-opponent").val() != "") {
+			if (inputVal != '') {
+				inputVal += ' and ';
+			}
+			try { 
+				inputVal += "will face " + Iconify($("#winner-next-opponent").val()) + " " + $("#winner-next-opponent").val();
+			} catch {
+				inputVal += "will face " + $("#winner-next-opponent").val();
+			}
+
+			if ($("#winner-next-opponent2").val() != "") {
+				try {
+					inputVal += " or " + Iconify($("#winner-next-opponent2").val()) + " " + $("#winner-next-opponent2").val();
+				} catch {
+					inputVal += " or " + $("#winner-next-opponent2").val();
+				}
+			}
+		} else if ($("#winner-next-opponent2").val() != "") {
+			if (inputVal != '') {
+				inputVal += ' and ';
+			}
+			try {
+				inputVal += "will face " + Iconify($("#winner-next-opponent2").val()) + " " + $("#winner-next-opponent2").val();
+			} catch {
+				inputVal += "will face " + $("#winner-next-opponent2").val();
+			}
+		}
+		data[0]["series-context1"] = {};
+		data[0]["series-context1"].value = inputVal;
+		
+		inputVal = $("#losers-context").val().trim();
+		if ($("#loser-next-opponent").val() != "") {
+			if (inputVal != '') {
+				inputVal += ' and ';
+			}
+			try {
+				inputVal += "will face " + Iconify($("#loser-next-opponent").val()) + " " + $("#loser-next-opponent").val();
+			} catch {
+				inputVal += "will face " + $("#loser-next-opponent").val();
+			}
+			if ($("#loser-next-opponent2").val() != "") {
+				try {
+					inputVal += " or " + Iconify($("#loser-next-opponent2").val()) + " " + $("#loser-next-opponent2").val();
+				} catch {
+					inputVal += " or " + $("#loser-next-opponent2").val();
+				}
+			}
+		} else if ($("#loser-next-opponent2").val() != "") {
+			if (inputVal != '') {
+				inputVal += ' and ';
+			}
+			try {
+				inputVal += "will face " + Iconify($("#loser-next-opponent2").val()) + " " + $("#loser-next-opponent2").val();
+			} catch {
+				inputVal += "will face " + $("#loser-next-opponent2").val();
+			}
+		}
+		data[0]["series-context2"] = {};
+		data[0]["series-context2"].value = inputVal;
+
+		// T1 for the series result
+		inputVal = team1GID;
+		if (inputVal == null || inputVal == '') {
+			inputVal = 'tbd';
+		}
+		data[0]["Team1name"] = {};
+		data[0]["Team1name"].value = inputVal;
+		
+		data[0]["Team1Default"] = {};
+		data[0]["Team1Default"].value = inputVal.replace(" ", " ^");
+
+		// T2 for the series result
+		inputVal = team2GID;
+		if (inputVal == null || inputVal == '') {
+			inputVal = 'tbd';
+		}
+		data[0]["Team2name"] = {};
+		data[0]["Team2name"].value = inputVal;
+
+		if (TEAMS[team1GID]) {
+
+			T1ut = {
+				string: $("#panels > div:nth-child(1) .maint1").val()
+			}
+
+			T1ut.wk = "";
+			T1ut.hl = "";
+			T1ut.os = "";
+			T1ut.tw = "";
+			T1ut.fb = "";
+			T1ut.ig = "";
+			T1ut.tk = "";
+			T1ut.wb = "";
+			T1ut.yt = "";
+			T1ut.tv = "";
+			T1ut.sb = "";
+
+			if (TEAMS[T1ut.string]["Wiki"] != "" && TEAMS[T1ut.string]["Wiki"] != null) {
+				T1ut.wk = " | [Liquipedia](" + TEAMS[T1ut.string]["Wiki"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["HLTV"] != "" && TEAMS[T1ut.string]["HLTV"] != null) {
+				T1ut.hl = " | [HLTV](" + TEAMS[T1ut.string]["HLTV"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Official Site"] != "" && TEAMS[T1ut.string]["Official Site"] != null) {
+				T1ut.os = " | [Official Site](" + TEAMS[T1ut.string]["Official Site"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Twitter"] != "" && TEAMS[T1ut.string]["Twitter"] != null) {
+				T1ut.tw = " | [Twitter](" + TEAMS[T1ut.string]["Twitter"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Facebook"] != "" && TEAMS[T1ut.string]["Facebook"] != null) {
+				T1ut.fb = " | [Facebook](" + TEAMS[T1ut.string]["Facebook"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Instagram"] != "" && TEAMS[T1ut.string]["Instagram"] != null) {
+				T1ut.ig = " | [Instagram](" + TEAMS[T1ut.string]["Instagram"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["TikTok"] != "" && TEAMS[T1ut.string]["TikTok"] != null) {
+				T1ut.tk = " | [TikTok](" + TEAMS[T1ut.string]["TikTok"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Weibo"] != "" && TEAMS[T1ut.string]["Weibo"] != null) {
+				T1ut.wb = " | [Weibo](" + TEAMS[T1ut.string]["Weibo"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["YouTube"] != "" && TEAMS[T1ut.string]["YouTube"] != null) {
+				T1ut.yt = " | [YouTube](" + TEAMS[T1ut.string]["YouTube"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Twitch"] != "" && TEAMS[T1ut.string]["Twitch"] != null) {
+				T1ut.tv = " | [Twitch](" + TEAMS[T1ut.string]["Twitch"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Subreddit"] != "" && TEAMS[T1ut.string]["Subreddit"] != null) {
+				T1ut.sb = " | [Subreddit](" + TEAMS[T1ut.string]["Subreddit"] + ")" || "";
+			}
+
+			data[0]["team1info"] = {
+				value: Iconify(team1GID) + " **" + team1GID + "**" + T1ut.wk + T1ut.hl + T1ut.os + T1ut.tw + T1ut.fb + T1ut.ig + T1ut.tk + T1ut.wb + T1ut.yt + T1ut.tv + T1ut.sb
+			};
+		}
+
+		if (TEAMS[team2GID]) {
+
+			T2ut = {
+				string: $("#panels > div:nth-child(1) .maint2").val()
+			}
+
+			T2ut.wk = "";
+			T2ut.hl = "";
+			T2ut.os = "";
+			T2ut.tw = "";
+			T2ut.fb = "";
+			T2ut.ig = "";
+			T2ut.tk = "";
+			T2ut.wb = "";
+			T2ut.yt = "";
+			T2ut.tv = "";
+			T2ut.sb = "";
+
+			if (TEAMS[T2ut.string]["Wiki"] != "" && TEAMS[T2ut.string]["Wiki"] != null) {
+				T2ut.wk = " | [Liquipedia](" + TEAMS[T2ut.string]["Wiki"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["HLTV"] != "" && TEAMS[T2ut.string]["HLTV"] != null) {
+				T2ut.hl = " | [HLTV](" + TEAMS[T2ut.string]["HLTV"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["Official Site"] != "" && TEAMS[T2ut.string]["Official Site"] != null) {
+				T2ut.os = " | [Official Site](" + TEAMS[T2ut.string]["Official Site"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["Twitter"] != "" && TEAMS[T2ut.string]["Twitter"] != null) {
+				T2ut.tw = " | [Twitter](" + TEAMS[T2ut.string]["Twitter"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["Facebook"] != "" && TEAMS[T2ut.string]["Facebook"] != null) {
+				T2ut.fb = " | [Facebook](" + TEAMS[T2ut.string]["Facebook"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["Instagram"] != "" && TEAMS[T2ut.string]["Instagram"] != null) {
+				T2ut.ig = " | [Instagram](" + TEAMS[T2ut.string]["Instagram"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["TikTok"] != "" && TEAMS[T2ut.string]["TikTok"] != null) {
+				T2ut.tk = " | [TikTok](" + TEAMS[T2ut.string]["TikTok"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["Weibo"] != "" && TEAMS[T2ut.string]["Weibo"] != null) {
+				T2ut.wb = " | [Weibo](" + TEAMS[T2ut.string]["Weibo"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["YouTube"] != "" && TEAMS[T2ut.string]["YouTube"] != null) {
+				T2ut.yt = " | [YouTube](" + TEAMS[T2ut.string]["YouTube"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["Twitch"] != "" && TEAMS[T2ut.string]["Twitch"] != null) {
+				T2ut.tv = " | [Twitch](" + TEAMS[T2ut.string]["Twitch"] + ")" || "";
+			}
+			if (TEAMS[T2ut.string]["Subreddit"] != "" && TEAMS[T2ut.string]["Subreddit"] != null) {
+				T2ut.sb = " | [Subreddit](" + TEAMS[T2ut.string]["Subreddit"] + ")" || "";
+			}
+			data[0]["team2info"] = {
+				value: Iconify(team2GID) + " **" + team2GID + "**" + T2ut.wk + T2ut.hl + T2ut.os + T2ut.tw + T2ut.fb + T2ut.ig + T2ut.tk + T2ut.wb + T2ut.yt + T2ut.tv + T2ut.sb
+			};
 		}
 		
 		var highlights = "";
@@ -791,113 +881,174 @@ $(document).ready(function () {
 		}
 		
 		
-		var headerSuffix = "";
+		// Suffix to add to "#header-infos" indicating whether there's a live thread
+		var liveThreadSuffix = "";
 
-		if ($("#live-thread-checkbox").is(":checked")) {
-			// NOP
-		} else {
-			headerSuffix += "-no-live-thread";
+		// If the live thread box isn't checked, add "-no-live-thread" to the suffix
+		if (!$("#live-thread-checkbox").is(":checked")) {
+			liveThreadSuffix += "-no-live-thread"
 		}
 
 		var iconsSuffix = "";
 
+		// Start the header with the main match result
 		var header = $("#header-event-name").val();
 		
+		// Add advantage info if the box is checked
 		if ($("#advantage-checkbox").is(":checked")) {
 			header += $("#header-default").val();
 		}
 
+		// Loop through maps played and add the scores for each map
 		for (i = 2; i < 7; i++) {
 			if ($('#panels > div:nth-child(' + i + ') .game-map').val() != "" && $('#panels > div:nth-child(' + i + ') .game-map').val() != null) {
 				if ($('#panels > div:nth-child(' + i + ') .T1').val() != null && $('#panels > div:nth-child(' + i + ') .T1').val() != "") {
 					console.log(i + $('#panels > div:nth-child(1) .maint1').val() + $('#panels > div:nth-child(' + i + ') .T1').val());
 					if ($('#panels > div:nth-child(1) .maint1').val() == $('#panels > div:nth-child(' + i + ') .T1').val()) {
+						console.log("map " + (i-1) + " is backwards");
 						header += $("#header-map-scores" + (i - 1) + "-b").val();
 					} else {
+						console.log("map " + (i-1) + " is normal");
 						header += $("#header-map-scores" + (i - 1)).val();
 					}
 				} else {
+					console.log("map " + (i-1) + " is not played");
 					header += $("#header-map-scores" + (i - 1) + "-np").val();
 				}
 			}
 		}
 		
+		// Add a note explaining default advantage
 		if ($("#advantage-checkbox").is(":checked")) {
 			header += $("#header-default-note").val();
 		}
 		
-		
+		// Add context info about a Grand Final result
 		if ($("#final-checkbox").is(":checked")) {
-			if ((data.length > 0) && (data[1]["series-context2"].value != '')) {
+			if ((data.length > 0) && (data[1]["series-context2"].value != '') && (data[1]["series-context2"].value != null)) {
 				header += $("#header-series-context-final2").val();
 			} else {
 				header += $("#header-series-context-final").val();
 			}
-		} else if ( (data.length > 0) && (data[1]["series-context1"].value != '') && (data[1]["series-context2"].value != '')) {
+
+		// Both teams have context info
+		} else if ( (data.length > 0) && (data[1]["series-context1"]) && (data[1]["series-context1"].value != '') && (data[1]["series-context2"]) && (data[1]["series-context2"].value != '') ) {
 			header += $("#header-series-context-both").val();
-		} else if ( (data.length > 0) && (data[1]["series-context1"].value != '') ) {
+
+		// Only winning team has context info
+		} else if ( (data.length > 0) && (data[1]["series-context1"]) && (data[1]["series-context1"].value != '') ) {
 			header += $("#header-series-context1").val();
-		} else if ( (data.length > 0) && (data[1]["series-context2"].value != '') ) {
+
+		// Only losing team has context info
+		} else if ( (data.length > 0) && (data[1]["series-context2"]) && (data[1]["series-context2"].value != '') ) {
 			header += $("#header-series-context2").val();
 		}
+
+		// Add ender to the header, with alternate form for a fake bo2
 		if ($("#epl-checkbox").is(":checked")) {
 			header += $("#header-end-fake-bo2").val();
 		} else {
 			header += $("#header-end").val();
 		}
-		//header += $("#header-end").val();
-
-		// header += $("event-setting");
 
 		// Add the VRS info if it's not empty
-		if ($("#panels > div:nth-child(1) #VRSA1").val()) {
+		if ($("#panels > div:nth-child(1) .VRSA1").val()) {
+
+			data[0]["VRSTA1"] = {};
+			data[0]["VRSTA1"].value = parseInt($("#panels > div:nth-child(1) .VRST1").val()) + parseInt($("#panels > div:nth-child(1) .VRSD1").val());
+			data[0]["VRSTA2"] = {};
+			data[0]["VRSTA2"].value = parseInt($("#panels > div:nth-child(1) .VRST2").val()) + parseInt($("#panels > div:nth-child(1) .VRSD2").val());
+
 			header += $("#vrs-prediction").val();
 		}
 
+		// Get the main team names
 		var team1ID = $("#panels > div:nth-child(1) .maint1").val();
 		var team2ID = $("#panels > div:nth-child(1) .maint2").val();
 
+		// If there's TEAM data for these team names, add their team information
 		if (TEAMS[team1ID] && TEAMS[team2ID]) {
 			header += $("#header-teams-infos").val();
 		}
 
-		header += $("#header-infos" + headerSuffix).val();
-		// header += $("#header-highlights").val();
+		// Add event discussion info
+		header += $("#header-infos" + liveThreadSuffix).val();
 
-		if ($("#epl-checkbox").is(":checked")) {
+		// If we have event setting data for this event, add the event setting section
+		if (EVENTS[data[0]["event-name"].value]) {
+			console.log("adding event setting text to output");
+			header += $("#event-setting").val();
+		}
+
+		// Add the coach for team 1
+		data[0]['C1'] = {};
+		if ((TEAMS[team1ID]["PLAYER 6"].endsWith('(c)'))) {
+			data[0]['C1'].value = Flagify(TEAMS[team1ID]["PLAYER 6"].split(' (')[0]);
+		} else {
+			data[0]['C1'].value = "-";
+		}
+			
+		// Add the coach for team 2
+		data[0]['C2'] = {};
+		if (TEAMS[team2ID]["PLAYER 6"].endsWith('(c)')) {
+			data[0]['C2'].value = Flagify(TEAMS[team2ID]["PLAYER 6"].split(' (')[0]);
+		} else {
+			data[0]['C2'].value = "-"
+		}
+
+		// Add the coach information
+		if (data[0]['C1'] != "-" || data[0]['C2'] != "-") {
+			header += $("#team-coaches").val();
+		}
+
+		// Add veto information
+		if ($("#epl-checkbox").is(":checked")) { // If the match consists of 2 bo1s, don't include vetoes
 			header += "";
-			//header += ($("#vetoes-not-available").val());
 		} else {
 			header += $("#vetoes" + CountMaps()).val();
 		}
 
+		// The main output
 		var main = "";
 
+		// Transition strings
 		var transition = $("#transition").val();
-
 		var string = "";
 
+		// Add the header to main
 		main += header;
+
+		// Get team 1 name and icon
 		data[0]["T1"] = {};
 		data[0]["T1"].value = team1GID;
 		data[0]["IconT1"] = {};
 		data[0]["IconT1"].value = Iconify(team1GID);
 
+		// Get team 2 name and icon
 		data[0]["T2"] = {};
 		data[0]["T2"].value = team2GID;
 		data[0]["IconT2"] = {};
 		data[0]["IconT2"].value = Iconify(team2GID);
 
+		// Add the overall stats if filled out
+		if ($("#panels > div:nth-child(1) .K1").val() != null) {
+			main += $('textarea#overall-scoreboard-stats').val();
+		}
+
+		// Replace placeholders with matches data (index 0)
 		for (j in data[0]) {
 			main = SearchReplace("%" + j, data[0][j], main);
 		}
 
-		main += $('textarea#overall-scoreboard-stats').val();
+		// Replace placeholders with veto / overall stats data (index 1)
+		for (j in data[1]) {
+			main = SearchReplace("%" + j, data[1][j], main);
+		}
 
-		for (i = 1; i < data.length; i++) {
-			if (!data[i])
+		for (i = 2; i < data.length; i++) {
+			if (!data[i]["P1"])
 				continue;
-			if (!($("#panels > div:nth-child(" + (i + 1) + ") .T1").val() == null || $("#panels > div:nth-child(" + (i + 1) + ") .T1").val() == '')) {
+			if (!($("#panels > div:nth-child(" + (i) + ") .T1").val() == null || $("#panels > div:nth-child(" + (i) + ") .T1").val() == '')) {
 				main += transition; /* adds the horizontal line between games */
 				/*
 				 * build one game output before giving it to the function that replaces
@@ -911,26 +1062,26 @@ $(document).ready(function () {
 				}
 
 				var sBInfos = 'textarea#main-scoreboard-infos';
-				if ($("#panels > div:nth-child(" + (i+1) + ") #left-side-checkbox").is(":checked")) {
+				if ($("#panels > div:nth-child(" + (i) + ") #left-side-checkbox").is(":checked")) {
 					sBInfos += '-swap';
 				}
 				
 				if ($("#panels > div:nth-child(" + (i+1) + ") #simple-scores-checkbox").is(":checked")) 
 					main += $('textarea#main-scoreboard-infos-simple').val();
-				else if ($("#panels > div:nth-child(" + (i + 1) + ") .LX1").val() != '' && $("#panels > div:nth-child(" + (i + 1) + ") .LX1").val() != null)
+				else if ($("#panels > div:nth-child(" + (i) + ") .LX1").val() != '' && $("#panels > div:nth-child(" + (i) + ") .LX1").val() != null)
 					main += $(sBInfos + '-ot5').val();
-				else if ($("#panels > div:nth-child(" + (i + 1) + ") .L9").val() != '' && $("#panels > div:nth-child(" + (i + 1) + ") .L9").val() != null)
+				else if ($("#panels > div:nth-child(" + (i) + ") .L9").val() != '' && $("#panels > div:nth-child(" + (i) + ") .L9").val() != null)
 					main += $(sBInfos + '-ot4').val();
-				else if ($("#panels > div:nth-child(" + (i + 1) + ") .L7").val() != '' && $("#panels > div:nth-child(" + (i + 1) + ") .L7").val() != null)
+				else if ($("#panels > div:nth-child(" + (i) + ") .L7").val() != '' && $("#panels > div:nth-child(" + (i) + ") .L7").val() != null)
 					main += $(sBInfos + '-ot3').val();
-				else if ($("#panels > div:nth-child(" + (i + 1) + ") .L5").val() != '' && $("#panels > div:nth-child(" + (i + 1) + ") .L5").val() != null)
+				else if ($("#panels > div:nth-child(" + (i) + ") .L5").val() != '' && $("#panels > div:nth-child(" + (i) + ") .L5").val() != null)
 					main += $(sBInfos + '-ot2').val();
-				else if ($("#panels > div:nth-child(" + (i + 1) + ") .L3").val() != '' && $("#panels > div:nth-child(" + (i + 1) + ") .L3").val() != null)
+				else if ($("#panels > div:nth-child(" + (i) + ") .L3").val() != '' && $("#panels > div:nth-child(" + (i) + ") .L3").val() != null)
 					main += $(sBInfos + '-ot1').val();
 				else
 					main += $(sBInfos).val();
 				
-				if (['1', '2', '3', '4'].indexOf($("#panels > div:nth-child(" + (i + 1) + ") .PNum").val()) > -1) {
+				if (['1', '2', '3', '4'].indexOf($("#panels > div:nth-child(" + (i) + ") .PNum").val()) > -1) {
 					numP = $("#panels > div:nth-child(" + (i + 1) + ") .PNum").val()
 					main += $('textarea#main-scoreboard-stats-' + numP + 'v' + numP).val().replace("_","");
 				} else if ($("#panels > div:nth-child(" + (i+1) + ") #simple-stats-checkbox").is(":checked")) {
@@ -942,6 +1093,10 @@ $(document).ready(function () {
 			for (j in data[i]) {
 				main = SearchReplace("%" + j, data[i][j], main);
 			}
+		}
+
+		for (j in data[0]) {
+			main = SearchReplace("%" + j, data[0][j], main);
 		}
 		
 		var lastTransition = $("#last-transition").val();
@@ -955,8 +1110,18 @@ $(document).ready(function () {
 		if ($("#pmt-checkbox").is(":checked"))
 			main += $("#end").val();
 
-		/* set the value of the output textarea so users can copy */
-		$("div#output-tab textarea").val(string + main);
+		// set the value of the output textarea so users can copy
+		$("#output-textarea").val(string + main);
+
+		var title = "";
+		title += $('textarea#title').val();
+
+		for (j in data[0]) {
+			title = SearchReplace("%" + j, data[0][j], title);
+		}
+
+		// Set the value of the title textarea so users can copy
+		$("#title-textarea").val(title);
 	});
 
 	$('#panels > div:nth-child(1) .maint1').blur(function () {
@@ -969,7 +1134,7 @@ $(document).ready(function () {
 		} else {
 			$(this).css('border-color', '#fffb36');
 			teamFullName = teamID;
-			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "VK":"", "Weibo":""}
+			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 		}
 		$('#Team1name').val(teamFullName);
 		$('#series-result').data('blue-team', teamFullName);
@@ -985,7 +1150,7 @@ $(document).ready(function () {
 		} else {
 			$(this).css('border-color', '#fffb36');
 			teamFullName = teamID;
-			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "VK":"", "Weibo":""}
+			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 		}
 		$('#Team2name').val(teamFullName);
 		$('#series-result').data('red-team', teamFullName);
@@ -1022,7 +1187,7 @@ $(document).ready(function () {
 			"Qatar": "🇶🇦",
 			"Romania": "🇷🇴","Russia": "🇷🇺","Rwanda": "🇷🇼",
 			"Saint Kitts and Nevis": "🇰🇳","Saint Lucia": "🇱🇨","Saint Vincent and the Grenadines": "🇻🇨","Samoa": "🇼🇸","San Marino": "🇸🇲","Sao Tome and Principe": "🇸🇹","Saudi Arabia": "🇸🇦","Senegal": "🇸🇳","Serbia": "🇷🇸","Seychelles": "🇸🇨","Sierra Leone": "🇸🇱","Singapore": "🇸🇬","Slovakia": "🇸🇰","Slovenia": "🇸🇮","Solomon Islands": "🇸🇧","Somalia": "🇸🇴","South Africa": "🇿🇦","South Sudan": "🇸🇸","Spain": "🇪🇸","Sri Lanka": "🇱🇰","Sudan": "🇸🇩","Suriname": "🇸🇷","Sweden": "🇸🇪","Switzerland": "🇨🇭","Syria": "🇸🇾",
-			"Taiwan": "🇹🇼","Tajikistan": "🇹🇯","Tanzania": "🇹🇿","Thailand": "🇹🇭","Timor-Leste": "🇹🇱","Togo": "🇹🇬","Tonga": "🇹🇴","Trinidad and Tobago": "🇹🇹","Tunisia": "🇹🇳","Turkey": "🇹🇷","Turkmenistan": "🇹🇲","Tuvalu": "🇹🇻",
+			"Taiwan": "🇹🇼","Tajikistan": "🇹🇯","Tanzania": "🇹🇿","Thailand": "🇹🇭","Timor-Leste": "🇹🇱","Togo": "🇹🇬","Tonga": "🇹🇴","Trinidad and Tobago": "🇹🇹","Tunisia": "🇹🇳","Türkiye": "🇹🇷","Turkmenistan": "🇹🇲","Tuvalu": "🇹🇻",
 			"Uganda": "🇺🇬","Ukraine": "🇺🇦","United Arab Emirates": "🇦🇪","United Kingdom": "🇬🇧","United States": "🇺🇸","Uruguay": "🇺🇾","Uzbekistan": "🇺🇿",
 			"Vanuatu": "🇻🇺","Vatican City": "🇻🇦","Venezuela": "🇻🇪","Vietnam": "🇻🇳",
 			"Yemen": "🇾🇪",
@@ -1071,7 +1236,7 @@ $(document).ready(function () {
 
 		// Team 1 on HLTV is not in database, create new team entry
 		if (!foundTeam1) {
-			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "VK":"", "Weibo":""}
+			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 			$(this).closest('div.veto-tab').find('input.maint1').val(TEAMS[team1Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint1').blur();
 			team1Name = TEAMS[team1Name]["Name"];
@@ -1079,7 +1244,7 @@ $(document).ready(function () {
 
 		// Team 2 on HLTV is not in database, create new team entry
 		if (!foundTeam2) {
-			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "VK":"", "Weibo":""}
+			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 			$(this).closest('div.veto-tab').find('input.maint2').val(TEAMS[team2Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint2').blur();
 			team2Name = TEAMS[team2Name]["Name"];
@@ -1100,6 +1265,9 @@ $(document).ready(function () {
 		var match_type_found = false;
 		var vetos_finished = false;
 		var stats_finished = false;
+		var vrs_started = false;
+		var vrs_rank_num = 0; 		// Instances of VRS rank lines (with '#')
+		var vrs_pt_num = 0;			// Instances of VRS point lines (with 'pt')
 		var vrs_finished = false;
 		var j = 0;
 		var team1NameLength = TEAMS[team1Name]["HLTV Name"].split(" ").length;
@@ -1116,13 +1284,28 @@ $(document).ready(function () {
 
 			// This is the line for the time of the match, the event name should be 2 lines after
 			if (!event_name_found && hltvTableLines[line].indexOf(":") != -1) {
-				$(this).closest('div.create').find('input.event-name').val(hltvTableLines[line+2].trim());
+				$('#event-name').val(hltvTableLines[line+2].trim());
 				event_name_found = true;
 			}
 
+			// This is the line for the match type
 			if (!match_type_found && hltvTableLines[line].indexOf("*") != -1) {
-			 	$(this).closest('div.veto-tab').find('input.match-type').val(titleCase(hltvTableLines[line].split('.')[0].split('*')[1].trim()));
+			 	$('#match-type').val(titleCase(hltvTableLines[line].split('.')[0].split('*')[1].trim()));
+
+				// This is a grand final, check the grand final checkbox
+				if ($('#match-type').val() == "Grand Final") {
+					$('#final-checkbox').val(":checked");
+				} else { // This is not a grand final, uncheck the checkbox
+					$('#final-checkbox').val(":unchecked");
+				}
+
 				match_type_found = true;
+			}
+
+			// Skip vrs and stats info if match is still live
+			if (hltvTableLines[line].indexOf("LIVE") != -1) {
+				stats_finished = true;
+				vrs_finished = true;
 			}
 
 			// '1.' is in the line - must be the first veto line
@@ -1181,8 +1364,10 @@ $(document).ready(function () {
 				playerName = $(this).closest('div.veto-tab').find('input.P' + j).val();
 				currentName = playerName;
 				console.log("initial player name:" + playerName);
-				var k = i;
+				var k = j;
 				hltvPlayerName = hltvTableLines[line-1].split("\'")[1];
+				console.log("HLTV Player Name: " + hltvPlayerName)
+				var addedNewPlayer = false;
 				while (!(playerName.trim().endsWith(hltvPlayerName)) && !(playerName.trim().endsWith(hltvPlayerName + " ♛")) && !(playerName.trim().endsWith(hltvPlayerName + " 𖦏")) && !(playerName.trim().endsWith(hltvPlayerName + " ♛𖦏"))) {
 					if (k < 9) {
 						k += 1;
@@ -1194,51 +1379,75 @@ $(document).ready(function () {
 						k = "Z";
 					} else {
 						playerName = countryDict[hltvTableLines[line - 2]] + " " + hltvPlayerName;
-						console.log("player: " + hltvPlayerName);
+						console.log("added new player: " + hltvPlayerName);
+						addedNewPlayer = true;
 						break;
 					}
 					playerName = $(this).closest('div.veto-tab').find('input.P' + k).val();
-					console.log(playerName.indexOf(hltvPlayerName) == -1);
 				}
-				$(this).closest('div.veto-tab').find('input.P' + j).val(playerName);
-				$(this).closest('div.veto-tab').find('input.P' + k).val(currentName);
-				console.log("final player name:" + playerName);
-				console.log("switching name:" + currentName);
+				if (!addedNewPlayer) {
+					console.log("found player: " + playerName);
+					if (playerName != currentName) {
+						$(this).closest('div.veto-tab').find('input.P' + j).val(playerName);
+						$(this).closest('div.veto-tab').find('input.P' + k).val(currentName);
+						console.log("final player name: " + playerName);
+						console.log("switching name: " + currentName);
+					} else {
+						console.log("final player name: " + playerName);
+						console.log("no switch needed");
+					}
+				} else {
+					$(this).closest('div.veto-tab').find('input.P' + j).val(playerName);
+				}
 			}
 
 			// Past the stats table
 			if (hltvTableLines[line].indexOf("Lineups") != -1) stats_finished = true;
 
-			// The VRS Prediction Info
-			if (hltvTableLines[line].indexOf("VRS result") != -1) {
-
-				// Ranks Before
-				$(this).closest('div.veto-tab').find('input.VRSB1').val(hltvTableLines[line+6].split("#")[1]);
-				$(this).closest('div.veto-tab').find('input.VRSB2').val(hltvTableLines[line+9].split("#")[1]);
-
-				// Ranks After
-				$(this).closest('div.veto-tab').find('input.VRSA1').val(hltvTableLines[line+11].split("#")[1]);
-				$(this).closest('div.veto-tab').find('input.VRSA2').val(hltvTableLines[line+15].split("#")[1]);
-
-				// Total Points Before
-				var point_before_1 = parseInt(hltvTableLines[line+5].split("pt")[0]);
-				var point_before_2 = parseInt(hltvTableLines[line+8].split("pt")[0]);
-
-				// Point Difference
-				var point_diff_1 = hltvTableLines[line+10].split("pt")[0];
-				var point_diff_2 = hltvTableLines[line+14].split("pt")[0];
-				$(this).closest('div.veto-tab').find('input.VRSD1').val(point_diff_1);
-				$(this).closest('div.veto-tab').find('input.VRSD2').val(point_diff_2);
-
-				// Total Points
-				$(this).closest('div.veto-tab').find('input.VRST1').val(point_before_1 + parseInt(point_diff_1));
-				$(this).closest('div.veto-tab').find('input.VRST2').val(point_before_2 + parseInt(point_diff_2));
-
-				// Finished parsing
-				break;
+			// The VRS Prediction Info started
+			if (!vrs_finished && !vrs_started && hltvTableLines[line].indexOf("VRS result") != -1) {
+				vrs_started = true;
+				line += 4; // Skip the 4 team name lines - necessary in case a team name contains 'pt'
 			}
 
+			// Parsing the VRS info
+			if (vrs_started && !vrs_finished) {
 
+				// A line with VRS ranks
+				if (hltvTableLines[line].indexOf("#") != -1) {
+
+					// Increase the rank count
+					vrs_rank_num++;
+
+					// Ranks before
+					if (vrs_rank_num == 1) $(this).closest('div.veto-tab').find('input.VRSB1').val(hltvTableLines[line].split('#')[1].trim());
+					else if (vrs_rank_num == 2) $(this).closest('div.veto-tab').find('input.VRSB2').val(hltvTableLines[line].split('#')[1].trim());
+
+					// Ranks after
+					else if (vrs_rank_num == 3) $(this).closest('div.veto-tab').find('input.VRSA1').val(hltvTableLines[line].split('#')[1].trim());
+					else if (vrs_rank_num == 4) {
+						$(this).closest('div.veto-tab').find('input.VRSA2').val(hltvTableLines[line].split('#')[1].trim());
+
+						// This is the last portion of the VRS result, can break the overall parsing loop
+						break;
+					}
+				}
+
+				// A line with VRS points
+				if (hltvTableLines[line].indexOf('pt') != -1) {
+
+					// Increase the point count
+					vrs_pt_num++;
+
+					// Point totals
+					if (vrs_pt_num == 1) $(this).closest('div.veto-tab').find('input.VRST1').val(hltvTableLines[line].split('pt')[0]);
+					else if (vrs_pt_num == 2) $(this).closest('div.veto-tab').find('input.VRST2').val(hltvTableLines[line].split('pt')[0]);
+
+					// Point differences
+					else if (vrs_pt_num == 3) $(this).closest('div.veto-tab').find('input.VRSD1').val(hltvTableLines[line].split('pt')[0]);
+					else if (vrs_pt_num == 4) $(this).closest('div.veto-tab').find('input.VRSD2').val(hltvTableLines[line].split('pt')[0]);
+				}
+			}
 		}
 	});
 	
@@ -1273,7 +1482,7 @@ $(document).ready(function () {
 			"Qatar": "🇶🇦",
 			"Romania": "🇷🇴","Russia": "🇷🇺","Rwanda": "🇷🇼",
 			"Saint Kitts and Nevis": "🇰🇳","Saint Lucia": "🇱🇨","Saint Vincent and the Grenadines": "🇻🇨","Samoa": "🇼🇸","San Marino": "🇸🇲","Sao Tome and Principe": "🇸🇹","Saudi Arabia": "🇸🇦","Senegal": "🇸🇳","Serbia": "🇷🇸","Seychelles": "🇸🇨","Sierra Leone": "🇸🇱","Singapore": "🇸🇬","Slovakia": "🇸🇰","Slovenia": "🇸🇮","Solomon Islands": "🇸🇧","Somalia": "🇸🇴","South Africa": "🇿🇦","South Sudan": "🇸🇸","Spain": "🇪🇸","Sri Lanka": "🇱🇰","Sudan": "🇸🇩","Suriname": "🇸🇷","Sweden": "🇸🇪","Switzerland": "🇨🇭","Syria": "🇸🇾",
-			"Taiwan": "🇹🇼","Tajikistan": "🇹🇯","Tanzania": "🇹🇿","Thailand": "🇹🇭","Timor-Leste": "🇹🇱","Togo": "🇹🇬","Tonga": "🇹🇴","Trinidad and Tobago": "🇹🇹","Tunisia": "🇹🇳","Turkey": "🇹🇷","Turkmenistan": "🇹🇲","Tuvalu": "🇹🇻",
+			"Taiwan": "🇹🇼","Tajikistan": "🇹🇯","Tanzania": "🇹🇿","Thailand": "🇹🇭","Timor-Leste": "🇹🇱","Togo": "🇹🇬","Tonga": "🇹🇴","Trinidad and Tobago": "🇹🇹","Tunisia": "🇹🇳","Türkiye": "🇹🇷","Turkmenistan": "🇹🇲","Tuvalu": "🇹🇻",
 			"Uganda": "🇺🇬","Ukraine": "🇺🇦","United Arab Emirates": "🇦🇪","United Kingdom": "🇬🇧","United States": "🇺🇸","Uruguay": "🇺🇾","Uzbekistan": "🇺🇿",
 			"Vanuatu": "🇻🇺","Vatican City": "🇻🇦","Venezuela": "🇻🇪","Vietnam": "🇻🇳",
 			"Yemen": "🇾🇪",
@@ -1319,7 +1528,7 @@ $(document).ready(function () {
 		
 		// Team 1 on HLTV is not in database, create new team entry
 		if (!foundTeam1) {
-			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "VK":"", "Weibo":""}
+			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 			$(this).closest('div.main').find('input.T1').val(TEAMS[team]["Name"]);
 			$(this).closest('div.main').find('input.T1').blur();
 			team1Name = TEAMS[team]["Name"];
@@ -1327,7 +1536,7 @@ $(document).ready(function () {
 
 		// Team 2 on HLTV is not in database, create new team entry
 		if (!foundTeam2) {
-			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "VK":"", "Weibo":""}
+			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 			$(this).closest('div.main').find('input.T2').val(TEAMS[team]["Name"]);
 			$(this).closest('div.main').find('input.T2').blur();
 			team2Name = TEAMS[team]["Name"];
@@ -1378,9 +1587,12 @@ $(document).ready(function () {
 				playerName = $(this).closest('div.main').find('input.P' + i).val();
 				currentName = playerName;
 				if (playerName == null) playerName = "";
-				console.log("initial player name:" + playerName);
+				console.log("initial player name: " + playerName);
 				var j = i;
-				while (!(playerName.trim().endsWith(hltvTableLines[line - 1])) && !(playerName.trim().endsWith(hltvTableLines[line - 1] + " ♛")) && !(playerName.trim().endsWith(hltvPlayerName[line - 1] + " 𖦏")) && !(playerName.trim().endsWith(hltvPlayerName[line - 1] + " ♛𖦏"))) {
+				var addedNewPlayer = false;
+				hltvPlayerName = hltvTableLines[line-1].trim();
+				console.log("HLTV Player Name: " + hltvTableLines[line-1]);
+				while (!(playerName.trim().endsWith(hltvPlayerName)) && !(playerName.trim().endsWith(hltvPlayerName + " ♛")) && !(playerName.trim().endsWith(hltvPlayerName + " 𖦏")) && !(playerName.trim().endsWith(hltvPlayerName + " ♛𖦏"))) {
 					if (j < 9) {
 						j += 1;
 					} else if (j == 9) {
@@ -1390,17 +1602,27 @@ $(document).ready(function () {
 					} else if (j == "Y") {
 						j = "Z";
 					} else {
-						playerName = countryDict[hltvTableLines[line - 2]] + " " + hltvTableLines[line - 1];
-						console.log("player: " + hltvTableLines[line - 1]);
+						playerName = countryDict[hltvTableLines[line - 2]] + " " + hltvPlayerName;
+						console.log("added new player: " + playerName);
+						addedNewPlayer = true;
 						break;
 					}
 					playerName = $(this).closest('div.main').find('input.P' + j).val();
-					console.log(playerName.indexOf(hltvTableLines[line - 1]) == -1);
 				}
-				$(this).closest('div.main').find('input.P' + i).val(playerName);
-				$(this).closest('div.main').find('input.P' + j).val(currentName);
-				console.log("final player name:" + playerName);
-				console.log("switching name:" + currentName);
+				if (!addedNewPlayer) {
+					console.log("found player: " + playerName);
+					if (playerName != currentName) {
+						$(this).closest('div.main').find('input.P' + i).val(playerName);
+						$(this).closest('div.main').find('input.P' + j).val(currentName);
+						console.log("final player name: " + playerName);
+						console.log("switching name: " + currentName);
+					} else {
+						console.log("final player name: " + playerName);
+						console.log("no switch needed");
+					}
+				} else {
+					$(this).closest('div.main').find('input.P' + i).val(playerName);
+				}
 
 			// Get the round stats pre overtime
 			} else if (hltvTableLines[line].indexOf("(") != -1 && hltvTableLines[line].indexOf(":") != -1 && hltvTableLines[line].indexOf("%") == -1 && hltvTableLines[line].indexOf("\"") == -1) {
@@ -1610,6 +1832,48 @@ $(document).ready(function () {
 		}
 	});
 
+	$(".maint1").blur(function () {
+		var teamID = $(this).val();
+		var teamFullName = "";
+		if (TEAMS[teamID] != null || TEAMS[teamID] != "") {
+			$(this).css('border-color', '#2ecc40');
+			teamFullName = TEAMS[teamID]["Name"];
+		} else {
+			$(this).css('border-color', '#ff4136');
+			teamFullName = teamID;
+		}
+
+		if (TEAMS[teamID]) {
+			var index = 0;
+			$(this).closest('div.veto-tab').find(".pps > div:nth-child(1) .players input").each(function () {
+				playerName = TEAMS[teamID][LB.PMTC.roleId[index]];
+				$(this).val(playerName);
+				index++;
+			});
+		}
+	});
+
+	$(".maint2").blur(function () {
+		var teamID = $(this).val();
+		var teamFullName = "";
+		if (TEAMS[teamID] != null || TEAMS[teamID] != "") {
+			$(this).css('border-color', '#2ecc40');
+			teamFullName = TEAMS[teamID]["Name"];
+		} else {
+			$(this).css('border-color', '#ff4136');
+			teamFullName = teamID;
+		}
+
+		if (TEAMS[teamID]) {
+			var index = 0;
+			$(this).closest('div.veto-tab').find(".pps > div:nth-child(2) .players input").each(function () {
+				playerName = TEAMS[teamID][LB.PMTC.roleId[index]];
+				$(this).val(playerName);
+				index++;
+			});
+		}
+	});
+
 
 	/** For MVP select when teams have subs **/
 
@@ -1711,6 +1975,7 @@ var TEAMS = {};
 
 $.post("../php/getJSON.php", {
 	feed: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFFzItpu4lT2eE6ivgvZdA-rMkB_sYT5LSWicXXEnkt-2mdMwThMbmAj0z8e9JTzWawtZBsDCehNeJ/pub?output=csv"
+	//feed: "../csgo/csv/Full_Teams.csv"
 }).done(function (d) {
 	
 	console.log(JSON.stringify(d));
@@ -1744,7 +2009,7 @@ $.post("../php/getJSON.php", {
 		}
 	}
 
-	console.log("First time: Successful")
+	console.log("Loading Teams - First time: Successful")
 
 	// Part 2
 	var teamListArray = d;
@@ -1776,7 +2041,26 @@ $.post("../php/getJSON.php", {
 	$("#fade").addClass('hidden');
 	$("#loading-teams-popup").addClass('hidden');
 
-	console.log("Second time: Successful");
+	console.log("Loading Teams - Second time: Successful");
+});
+
+var EVENTS = {}
+
+$.post("../php/getJSON.php", {
+	feed: "https://docs.google.com/spreadsheets/d/1op6sU2qE8Gugtn6SLhiTJDaFqQFPN_GlmEs8cHNeO9M/pub?output=csv"
+	//feed: "../csgo/csv/Events.csv"
+}).done(function (d) {
+	
+	console.log(JSON.stringify(d));
+
+	for (i in d) {
+		EVENTS[d[i]["Name"]] = d[i];
+	}
+
+	$("#fade").addClass('hidden');
+	$("#loading-teams-popup").addClass('hidden');
+
+	console.log("Loading Events: Successful");
 });
 
 function IconifyVeto(teamID) {

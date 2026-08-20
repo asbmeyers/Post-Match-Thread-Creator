@@ -22,7 +22,8 @@
 			<!-- js -->
 			<script src="js/vendor/modernizr-custom.js"></script>
 			<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.1.0.min.js"><\/script>')</script>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+			<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+			<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 			<script type="text/javascript" src="js/plugins.js"></script>
 			<script type="text/javascript" src="js/main.js"></script>
 			<!--<script type="text/javascript" src="js/pmtc.js"></script>

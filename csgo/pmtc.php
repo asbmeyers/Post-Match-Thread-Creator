@@ -34,7 +34,7 @@
 				<td>
 					<div class="inline-block label-div" data-tooltip="Is there a schedule/discussion thread?" data-tooltip-position="bottom">
 						<label for="live-thread-checkbox"></label>
-						<input type="checkbox" id="live-thread-checkbox" checked="checked" style="width: 22px;">
+						<input type="checkbox" id="live-thread-checkbox" style="width: 22px;">
 					</div>
 				</td>
 				<td>
@@ -71,6 +71,17 @@
 				</td>
 			</tr>
 		</table>
+		<table class="inline-block">
+			<tr>
+				<td>
+					<div class="inline-block" data-tooltip="The Match Type (Grand Final, Lower Bracket Semi-Final, etc.)" data-tooltip-position="left">
+						<input type="text" id="match-type" o=1 value="" placeholder="Match Type" Style="width:450px"/>
+					</div>
+					<div class="inline-block" data-tooltip="The URL for this match's page on HLTV" data-tooltip-position="right">
+						<input type="text" id="hltv-url" o=1 value="" placeholder="HLTV URL" Style="width:250px"/>
+					</div>
+				</td>
+			</tr>
 		<table class="inline-block">
 			<tr>
 				<td>
@@ -115,20 +126,13 @@
 	<div id="panels">
 		<div class="veto-tab">
 
-			<div class="inline-block" data-tooltip="The URL for the HLTV match page." data-tooltip-position="top">
-				<input type="text" class="hltv-url" placeholder="HLTV URL" value="">
-			</div>
-			<div class="inline-block" data-tooltip="The Match Type (Grand Final, Upper Bracket Quarter-Final, etc.)." data-tooltip-position="top">
-				<input type="text" class="match-type" placeholder="Match Type" value="" style="width: 300px">
-			</div>
-
 			<div class="hltv-main-page">
-					<textarea class="hltvmaintable" placeholder="HLTV Page Copy and Paste (not link, ctrl-a)" style="width: 890px; margin-bottom: 10px;"></textarea>
+					<textarea class="hltvmaintable" placeholder="HLTV Page Copy and Paste (not link, ctrl-a)"></textarea>
 			</div>
 
 			<div class="main-teams">
-				<div class="inline-block"><input type="text" class="maint1" id="team-1-name" list="TeamDataList" tabindex="1" placeholder="Title - Team 1" /></div>
-				<div class="inline-block"><input type="text" class="maint2" id="team-2-name" list="TeamDataList" tabindex="2" placeholder="Title - Team 2" /></div>
+				<div class="inline-block"><input type="text" class="maint1" id="team-1-name" list="TeamDataList" tabindex="1" placeholder="Team 1 Name" /></div>
+				<div class="inline-block"><input type="text" class="maint2" id="team-2-name" list="TeamDataList" tabindex="2" placeholder="Team 2 Name" /></div>
 			</div>
 			<div class="veto-infos">
 				<div class="maps-left">
@@ -239,7 +243,7 @@
 						<div><input type="text" tabindex="47" class="ADR5" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
 						<!-- *** -->
 					</div>
-					<div class="scores-adr">
+					<div class="scores-swing">
 						<div><input type="text" tabindex="28" class="SW1" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
 						<!-- *** -->
 						<div><input type="text" tabindex="33" class="SW2" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
@@ -266,12 +270,12 @@
 					<div class="vrs-info">
 						<table>
 							<tr>
-								<td><input type="text" tabindex="75" class="VRSB1" data-inputmask="'mask': '9[9][9][9]'" placeholder="VRS # Before"></td>
-								<td><input type="text" tabindex="77" class="VRSA1" data-inputmask="'mask': '9[9][9][9]'" placeholder="VRS # After"></td>
+								<td><input type="text" tabindex="75" class="VRSB1" data-inputmask="'regex': '[1-9][0-9]{0-3}'" placeholder="VRS # Before"></td>
+								<td><input type="text" tabindex="77" class="VRSA1" data-inputmask="'regex': '[1-9][0-9]{0-3}'" placeholder="VRS # After"></td>
 							</tr>
 							<tr>
 								<td><input type="text" tabindex="79" class="VRSD1" data-inputmask="'regex': '([+-][1-9][0-9]{1-3})|0'" placeholder="VRS Pts Diff"></td>
-								<td><input type="text" tabindex="81" class="VRST1" data-inputmask="'mask': '9[9][9][9]'" placeholder="VRS Total Pts"></td>
+								<td><input type="text" tabindex="81" class="VRST1" data-inputmask="'regex': '[1-9][0-9]{0-3}'" placeholder="VRS Total Pts"></td>
 							</tr>
 						</table>
 					</div>
@@ -332,7 +336,7 @@
 						<div><input type="text" tabindex="72" class="ADRX" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
 						<!-- *** -->
 					</div>
-					<div class="scores-adr">
+					<div class="scores-swing">
 						<div><input type="text" tabindex="53" class="SW6" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
 						<!-- *** -->
 						<div><input type="text" tabindex="58" class="SW7" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
@@ -359,12 +363,12 @@
 					<div class="vrs-info">
 						<table>
 							<tr>
-								<td><input type="text" tabindex="75" class="VRSB2" data-inputmask="'mask': '9[9][9][9]'" placeholder="VRS # Before"></td>
-								<td><input type="text" tabindex="77" class="VRSA2" data-inputmask="'mask': '9[9][9][9]'" placeholder="VRS # After"></td>
+								<td><input type="text" tabindex="75" class="VRSB2" data-inputmask="'regex': '[1-9][0-9]{0-3}'" placeholder="VRS # Before"></td>
+								<td><input type="text" tabindex="77" class="VRSA2" data-inputmask="'regex': '[1-9][0-9]{0-3}'" placeholder="VRS # After"></td>
 							</tr>
 							<tr>
 								<td><input type="text" tabindex="79" class="VRSD2" data-inputmask="'regex': '([+-][1-9][0-9]{1-3})|0'" placeholder="VRS Pts Diff"></td>
-								<td><input type="text" tabindex="81" class="VRST2" data-inputmask="'mask': '9[9][9][9]'" placeholder="VRS Total Pts"></td>
+								<td><input type="text" tabindex="81" class="VRST2" data-inputmask="'regex': '[1-9][0-9]{0-3}'" placeholder="VRS Total Pts"></td>
 							</tr>
 						</table>
 					</div>
@@ -393,7 +397,7 @@
 					<input type="text" class="game-map" placeholder="Map" readonly="readonly" />
 				</div>
 				<div class="inline-block" data-tooltip="Link of HLTV in depth stats" data-tooltip-position="bottom">
-					<input type="url" class="match-history" value="" placeholder="Match History" />
+					<input type="url" class="match-history" value="" placeholder="HLTV Map URL" />
 					<!-- *** -->
 				</div>
 				<div class="inline-block label-div" data-tooltip="Checked = Left Team starts T Unchecked = Left Team starts CT" data-tooltip-position="bottom">
@@ -470,7 +474,7 @@
 						<div><input type="text" tabindex="46" class="D5" placeholder="D"></div>
 						<!-- *** -->
 					</div>
-					<div class="scores">
+					<div class="scores-adr">
 						<div><input type="text" tabindex="27" class="ADR1" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
 						<!-- *** -->
 						<div><input type="text" tabindex="32" class="ADR2" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
@@ -482,7 +486,7 @@
 						<div><input type="text" tabindex="47" class="ADR5" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
 						<!-- *** -->
 					</div>
-					<div class="scores-adr">
+					<div class="scores-swing">
 						<div><input type="text" tabindex="28" class="SW1" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
 						<!-- *** -->
 						<div><input type="text" tabindex="33" class="SW2" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
@@ -570,7 +574,7 @@
 						<div><input type="text" tabindex="72" class="DX" placeholder="D"></div>
 						<!-- *** -->
 					</div>
-					<div class="scores">
+					<div class="scores-adr">
 						<div><input type="text" tabindex="52" class="ADR6" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
 						<!-- *** -->
 						<div><input type="text" tabindex="57" class="ADR7" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
@@ -582,7 +586,7 @@
 						<div><input type="text" tabindex="72" class="ADRX" data-inputmask="'mask': '(99[9].9)|(9[9].9)'" placeholder="ADR"></div>
 						<!-- *** -->
 					</div>
-					<div class="scores-adr">
+					<div class="scores-swing">
 						<div><input type="text" tabindex="53" class="SW6" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
 						<!-- *** -->
 						<div><input type="text" tabindex="58" class="SW7" data-inputmask="'regex': '[+-][0-9]+\\.[0-9]{2}%'" placeholder="SW%"></div>
@@ -686,7 +690,13 @@
 		</div>
 		<div id="output-tab">
 			<div>
-				<button class="btn" type="button" data-clipboard-target="#output-textarea">Copy!</button>
+				<button class="btn" type="button" data-clipboard-target="#title-textarea">Copy Title!</button>
+			</div>
+			<div>
+				<textarea id="title-textarea"></textarea>
+			</div>
+			<div>
+				<button class="btn" type="button" data-clipboard-target="#output-textarea">Copy Output!</button>
 			</div>
 			<div>
 				<textarea id="output-textarea"></textarea>
@@ -697,8 +707,10 @@
 
 <section style="display: none" id="edit">
 
+	<textarea id="title">%T1 vs %T2 / %event-name - %match-type / Post-Match Discussion</textarea>
+
 	<textarea id="header-event-name">
-#%T1 %IconT1 %series-result %IconT2 %T2  
+#%T1 %IconT1 [%series-result](%hltv-url) %IconT2 %T2  
 
 </textarea>
 
@@ -714,8 +726,16 @@
 **%pergame-map1:** %LRounds1-%RRounds1  
 </textarea>
 
+	<textarea id="header-map-scores1-np">
+**%pergame-map1:** 0-0  
+</textarea>
+
 	<textarea id="header-map-scores2">
 **%pergame-map2:** %RRounds2-%LRounds2  
+</textarea>
+
+	<textarea id="header-map-scores2-np">
+**%pergame-map2:** 0-0  
 </textarea>
 
 	<textarea id="header-map-scores2-b">
@@ -838,7 +858,7 @@
 </textarea>
 
 	<textarea id="event-setting">
-**Setting**: %event-setting  
+**%event-name**: %event-flag %event-city (%event-prize %event-type) | [Liquipedia][%event-liquipedia] | HLTV[%event-hltv]  
   
 </textarea>
 
@@ -847,14 +867,29 @@
   
 Team | Rank | Diff | Total  
 :--|:--:|:--:|:--:  
-%IconStatsT1%Team1Initials | #%VRSB1 → #%VRSA1 | %VRSD1 pts | %VRST1 pts |  
-%IconStatsT2%Team2Initials | #%VRSB2 → #%VRSA2 | %VRSD2 pts | %VRST2 pts |  
+%IconStatsT1%Team1Initials** | #%VRSB1 → #%VRSA1 | %VRSD1 pts | %VRSTA1 pts |  
+%IconStatsT2%Team2Initials** | #%VRSB2 → #%VRSA2 | %VRSD2 pts | %VRSTA2 pts |  
   
 ^Note: ^VRS ^officially ^updates ^once ^per ^month. ^This ^is ^simply ^a ^prediction ^that ^might ^not ^take ^into ^account ^all ^factors ^that ^go ^into ^VRS ^calculations.
 
 &amp;nbsp;
 
 -----
+</textarea>
+
+	<textarea id="event-setting">
+
+**Event Setting**: %event-flag %event-city (%event-prize %event-type)  
+
+</textarea>
+
+	<textarea id="team-coaches">
+
+|**Team**|**Main Roster**|**Subs/Bench**|**Coach**|  
+:--|:--:|  
+%IconStatsT1%Team1Initials** | %P1 %P2 %P3 %P4 %P5 | %SBP | %C1 |  
+%IconStatsT2%Team2Initials** | %P6 %P7 %P8 %P9 %PX | %SBP | %C2 |  
+
 </textarea>
 
 	<textarea id="header-infos">
@@ -1150,13 +1185,13 @@ Team | Rank | Diff | Total
 
 |**Team**|**K-D**|**ADR**|**Swing**|**Rating**|
 |:--|--:|--:|--:|--:|--:|
-|&amp;nbsp;&amp;nbsp;%IconStatsT1%Team1Initials**|||||%RAT1|
+|&amp;nbsp;&amp;nbsp;%IconStatsT1%Team1Initials**||||%RAT1|
 |%P1o|%K1-%D1|%ADR1|%SW1|%RA1|
 |%P2o|%K2-%D2|%ADR2|%SW2|%RA2|
 |%P3o|%K3-%D3|%ADR3|%SW3|%RA3|
 |%P4o|%K4-%D4|%ADR4|%SW4|%RA4|
 |%P5o|%K5-%D5|%ADR5|%SW5|%RA5|
-|&amp;nbsp;&amp;nbsp;%IconStatsT2%Team2Initials**|||||%RAT2|
+|&amp;nbsp;&amp;nbsp;%IconStatsT2%Team2Initials**||||%RAT2|
 |%P6o|%K6-%D6|%ADR6|%SW6|%RA6|
 |%P7o|%K7-%D7|%ADR7|%SW7|%RA7|
 |%P8o|%K8-%D8|%ADR8|%SW8|%RA8|
@@ -1171,13 +1206,13 @@ Team | Rank | Diff | Total
 
 |**Team**|**K-D**|**ADR**|**Swing**|**Rating**|
 |:--|--:|--:|--:|--:|--:|
-|&amp;nbsp;&amp;nbsp;%IconStatsT1%Team1Initials**|||||%RAT1|
+|&amp;nbsp;&amp;nbsp;%IconStatsT1%Team1Initials**||||%RAT1|
 |%P1o|%K1-%D1|%ADR1|%SW1|%RA1|
 |%P2o|%K2-%D2|%ADR2|%SW2|%RA2|
 |%P3o|%K3-%D3|%ADR3|%SW3|%RA3|
 |%P4o|%K4-%D4|%ADR4|%SW4|%RA4|
 |%P5o|%K5-%D5|%ADR5|%SW5|%RA5|
-|&amp;nbsp;&amp;nbsp;%IconStatsT2%Team2Initials**|||||%RAT2|
+|&amp;nbsp;&amp;nbsp;%IconStatsT2%Team2Initials**||||%RAT2|
 |%P6o|%K6-%D6|%ADR6|%SW6|%RA6|
 |%P7o|%K7-%D7|%ADR7|%SW7|%RA7|
 |%P8o|%K8-%D8|%ADR8|%SW8|%RA8|
