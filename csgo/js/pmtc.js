@@ -351,32 +351,36 @@ $(document).ready(function () {
 		if (!TEAMS[team1GID])
 			TEAMS[team1GID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1GID, "HLTV Name":team1GID, "Name":team1GID, 
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", 
-							"Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", 
+							"Wiki":"", "HLTV":"", "Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", "Instagram":"", 
 							"YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""};
 		if (!TEAMS[team2GID])
 			TEAMS[team2GID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2GID, "HLTV Name":team2GID, "Name":team2GID, 
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", 
-							"Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", 
+							"Wiki":"", "HLTV":"", "Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", "Instagram":"", 
 							"YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""};
 
 		// event name
+		event_name = $("#event-name").val();
 		data[0]["event-name"] = {};
-		data[0]["event-name"].value = $("#event-name").val();
+		data[0]["event-name"].value = event_name;
+
+		console.log("Event Name: " + event_name);
+		console.log("In event data: " + (EVENTS[event_name] != null))
 
 		// Event Settings
-		if (EVENTS[data[0]["event-name"].value]) {
+		if (EVENTS[event_name] != null) {
 
 			// Flag for event location
 			data[0]["event-flag"] = {};
-			data[0]["event-flag"].value = Flagify(EVENTS[data[0]["event-name"].value]["Flag"]);
+			data[0]["event-flag"].value = Flagify(EVENTS[event_name]["Flag"]);
 
 			// Name of city / online region of event
-			city = EVENTS[data[0]["event-name"].value]["City"];
+			city = EVENTS[event_name]["City"];
 			data[0]["event-city"] = {};
 			data[0]["event-city"].value = city
 
 			// Prize pool
-			prize = EVENTS[data[0]["event-name"].value]["Prize"];
+			prize = EVENTS[event_name]["Prize"];
 			if (prize == '' || prize == null) prize = "$0";
 			data[0]["event-prize"] = {};
 			data[0]["event-prize"].value = prize;
@@ -391,11 +395,57 @@ $(document).ready(function () {
 
 			// Event HLTV Page
 			data[0]["event-hltv"] = {};
-			data[0]["event-hltv"].value = EVENTS[data[0]["event-name"].value]["HLTV"];
+			data[0]["event-hltv"].value = EVENTS[event_name]["HLTV"];
 
 			// Event Liquipedia Page
-			data[0]['event-liquipedia'] = {};
-			data[0]['event-liquipedia'] = EVENTS[data[0]["event-name"].value]["Liquipedia"];
+			data[0]['event-wiki'] = {};
+			data[0]['event-wiki'].value = EVENTS[event_name]["Wiki"];
+
+			// Event Reddit Post
+			data[0]['event-reddit'] = {};
+			if (EVENTS[event_name]["Reddit"] != "" && EVENTS[event_name]["Reddit"] != null) {
+				data[0]['event-reddit'].value = " | [Reddit(" + EVENTS[event_name]["Reddit"] + ")";
+			} else {
+				data[0]['event-reddit'].value = "";
+			}
+
+			// Event streams
+			data[0]['event-streams'] = {};
+			var streams = ""
+			if (EVENTS[event_name]["YouTube"] != "" && EVENTS[event_name]["YouTube"] != null) {
+				streams += " | [YouTube](" + EVENTS[event_name]["YouTube"] + ")";
+			}
+			if (EVENTS[event_name]["Twitch A"] != "" && EVENTS[event_name]["Twitch A"] != null) {
+				streams += " | [Twitch A](" + EVENTS[event_name]["Twitch A"] + ")";
+			}
+			if (EVENTS[event_name]["Twitch B"] != "" && EVENTS[event_name]["Twitch B"] != null) {
+				streams += " | [Twitch B](" + EVENTS[event_name]["Twitch B"] + ")";
+			}
+			if (EVENTS[event_name]["Twitch C"] != "" && EVENTS[event_name]["Twitch C"] != null) {
+				streams += " | [Twitch C](" + EVENTS[event_name]["Twitch C"] + ")";
+			}
+			if (EVENTS[event_name]["Twitch D"] != "" && EVENTS[event_name]["Twitch D"] != null) {
+				streams += " | [Twitch D](" + EVENTS[event_name]["Twitch D"] + ")";
+			}
+			if (EVENTS[event_name]["Kick A"] != "" && EVENTS[event_name]["Kick A"] != null) {
+				streams += " | [Kick A](" + EVENTS[event_name]["Kick A"] + ")";
+			}
+			if (EVENTS[event_name]["Kick B"] != "" && EVENTS[event_name]["Kick B"] != null) {
+				streams += " | [Kick B](" + EVENTS[event_name]["Kick B"] + ")";
+			}
+			if (EVENTS[event_name]["Kick C"] != "" && EVENTS[event_name]["Kick C"] != null) {
+				streams += " | [Kick C](" + EVENTS[event_name]["Kick C"] + ")";
+			}
+			if (EVENTS[event_name]["Kick D"] != "" && EVENTS[event_name]["Kick D"] != null) {
+				streams += " | [Kick D](" + EVENTS[event_name]["Kick D"] + ")";
+			}
+
+			if (streams == "") {
+				data[0]['event-streams'].value = "";
+			} else {
+				data[0]['event-streams'].value = "**Streams**" + streams + "  ";
+			}
+
 		}
 
 		// Match type
@@ -533,7 +583,7 @@ $(document).ready(function () {
 
 					// game number
 					data[i]["gameX"] = {};
-					data[i]["gameX"].value = i;
+					data[i]["gameX"].value = i-1;
 
 					//Total rounds
 					var roundCounterTemp = 0;
@@ -753,17 +803,19 @@ $(document).ready(function () {
 				string: $("#panels > div:nth-child(1) .maint1").val()
 			}
 
-			T1ut.wk = "";
-			T1ut.hl = "";
-			T1ut.os = "";
-			T1ut.tw = "";
-			T1ut.fb = "";
-			T1ut.ig = "";
-			T1ut.tk = "";
-			T1ut.wb = "";
-			T1ut.yt = "";
-			T1ut.tv = "";
-			T1ut.sb = "";
+			T1ut.wk = ""; // Liquipedia
+			T1ut.hl = ""; // HLTV
+			T1ut.os = ""; // Official Site
+			T1ut.st = ""; // Steam
+			T1ut.fa = ""; // Faceit
+			T1ut.tw = ""; // Twitter
+			T1ut.fb = ""; // Facebook
+			T1ut.ig = ""; // Instagram
+			T1ut.tk = ""; // TikTok
+			T1ut.wb = ""; // Weibo
+			T1ut.yt = ""; // YouTube
+			T1ut.tv = ""; // Twitch
+			T1ut.sb = ""; // Subreddit
 
 			if (TEAMS[T1ut.string]["Wiki"] != "" && TEAMS[T1ut.string]["Wiki"] != null) {
 				T1ut.wk = " | [Liquipedia](" + TEAMS[T1ut.string]["Wiki"] + ")" || "";
@@ -773,6 +825,12 @@ $(document).ready(function () {
 			}
 			if (TEAMS[T1ut.string]["Official Site"] != "" && TEAMS[T1ut.string]["Official Site"] != null) {
 				T1ut.os = " | [Official Site](" + TEAMS[T1ut.string]["Official Site"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Steam"] != "" && TEAMS[T1ut.string]["Steam"] != null) {
+				T1ut.st = " | [Steam](" + TEAMS[T1ut.string]["Steam"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Faceit"] != "" && TEAMS[T1ut.string]["Faceit"] != null) {
+				T1ut.fa = " | [Faceit](" + TEAMS[T1ut.string]["Faceit"] + ")" || "";
 			}
 			if (TEAMS[T1ut.string]["Twitter"] != "" && TEAMS[T1ut.string]["Twitter"] != null) {
 				T1ut.tw = " | [Twitter](" + TEAMS[T1ut.string]["Twitter"] + ")" || "";
@@ -800,7 +858,7 @@ $(document).ready(function () {
 			}
 
 			data[0]["team1info"] = {
-				value: Iconify(team1GID) + " **" + team1GID + "**" + T1ut.wk + T1ut.hl + T1ut.os + T1ut.tw + T1ut.fb + T1ut.ig + T1ut.tk + T1ut.wb + T1ut.yt + T1ut.tv + T1ut.sb
+				value: Iconify(team1GID) + " **" + team1GID + "**" + T1ut.wk + T1ut.hl + T1ut.os + T1ut.st + T1ut.fa + T1ut.tw + T1ut.fb + T1ut.ig + T1ut.tk + T1ut.wb + T1ut.yt + T1ut.tv + T1ut.sb
 			};
 		}
 
@@ -810,17 +868,19 @@ $(document).ready(function () {
 				string: $("#panels > div:nth-child(1) .maint2").val()
 			}
 
-			T2ut.wk = "";
-			T2ut.hl = "";
-			T2ut.os = "";
-			T2ut.tw = "";
-			T2ut.fb = "";
-			T2ut.ig = "";
-			T2ut.tk = "";
-			T2ut.wb = "";
-			T2ut.yt = "";
-			T2ut.tv = "";
-			T2ut.sb = "";
+			T2ut.wk = ""; // Liquipedia
+			T2ut.hl = ""; // HLTV
+			T2ut.os = ""; // Official Site
+			T1ut.st = ""; // Steam
+			T1ut.fa = ""; // Faceit
+			T2ut.tw = ""; // Twitter
+			T2ut.fb = ""; // Facebook
+			T2ut.ig = ""; // Instagram
+			T2ut.tk = ""; // TikTok
+			T2ut.wb = ""; // Weibo
+			T2ut.yt = ""; // YouTube
+			T2ut.tv = ""; // Twitch
+			T2ut.sb = ""; // Subreddit
 
 			if (TEAMS[T2ut.string]["Wiki"] != "" && TEAMS[T2ut.string]["Wiki"] != null) {
 				T2ut.wk = " | [Liquipedia](" + TEAMS[T2ut.string]["Wiki"] + ")" || "";
@@ -830,6 +890,12 @@ $(document).ready(function () {
 			}
 			if (TEAMS[T2ut.string]["Official Site"] != "" && TEAMS[T2ut.string]["Official Site"] != null) {
 				T2ut.os = " | [Official Site](" + TEAMS[T2ut.string]["Official Site"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Steam"] != "" && TEAMS[T1ut.string]["Steam"] != null) {
+				T2ut.st = " | [Steam](" + TEAMS[T1ut.string]["Steam"] + ")" || "";
+			}
+			if (TEAMS[T1ut.string]["Faceit"] != "" && TEAMS[T1ut.string]["Faceit"] != null) {
+				T2ut.fa = " | [Faceit](" + TEAMS[T1ut.string]["Faceit"] + ")" || "";
 			}
 			if (TEAMS[T2ut.string]["Twitter"] != "" && TEAMS[T2ut.string]["Twitter"] != null) {
 				T2ut.tw = " | [Twitter](" + TEAMS[T2ut.string]["Twitter"] + ")" || "";
@@ -856,7 +922,7 @@ $(document).ready(function () {
 				T2ut.sb = " | [Subreddit](" + TEAMS[T2ut.string]["Subreddit"] + ")" || "";
 			}
 			data[0]["team2info"] = {
-				value: Iconify(team2GID) + " **" + team2GID + "**" + T2ut.wk + T2ut.hl + T2ut.os + T2ut.tw + T2ut.fb + T2ut.ig + T2ut.tk + T2ut.wb + T2ut.yt + T2ut.tv + T2ut.sb
+				value: Iconify(team2GID) + " **" + team2GID + "**" + T2ut.wk + T2ut.hl + T2ut.os + T2ut.st + T2ut.fa + T2ut.tw + T2ut.fb + T2ut.ig + T2ut.tk + T2ut.wb + T2ut.yt + T2ut.tv + T2ut.sb
 			};
 		}
 		
@@ -932,15 +998,15 @@ $(document).ready(function () {
 			}
 
 		// Both teams have context info
-		} else if ( (data.length > 0) && (data[1]["series-context1"]) && (data[1]["series-context1"].value != '') && (data[1]["series-context2"]) && (data[1]["series-context2"].value != '') ) {
+		} else if ( (data.length > 0) && (data[0]["series-context1"]) && (data[0]["series-context1"].value != '') && (data[0]["series-context2"]) && (data[0]["series-context2"].value != '') ) {
 			header += $("#header-series-context-both").val();
 
 		// Only winning team has context info
-		} else if ( (data.length > 0) && (data[1]["series-context1"]) && (data[1]["series-context1"].value != '') ) {
+		} else if ( (data.length > 0) && (data[0]["series-context1"]) && (data[0]["series-context1"].value != '') ) {
 			header += $("#header-series-context1").val();
 
 		// Only losing team has context info
-		} else if ( (data.length > 0) && (data[1]["series-context2"]) && (data[1]["series-context2"].value != '') ) {
+		} else if ( (data.length > 0) && (data[0]["series-context2"]) && (data[0]["series-context2"].value != '') ) {
 			header += $("#header-series-context2").val();
 		}
 
@@ -962,43 +1028,110 @@ $(document).ready(function () {
 			header += $("#vrs-prediction").val();
 		}
 
+		// If we have event setting data for this event, add the event setting section
+		if (EVENTS[data[0]["event-name"].value] != null) {
+			header += $("#event-info").val();
+		}
+
 		// Get the main team names
 		var team1ID = $("#panels > div:nth-child(1) .maint1").val();
 		var team2ID = $("#panels > div:nth-child(1) .maint2").val();
 
-		// If there's TEAM data for these team names, add their team information
-		if (TEAMS[team1ID] && TEAMS[team2ID]) {
-			header += $("#header-teams-infos").val();
-		}
+		// Role ids for more easily extracting lineups
+		roleId = {
+			0: "PLAYER 1",
+			1: "PLAYER 2",
+			2: "PLAYER 3",
+			3: "PLAYER 4",
+			4: "PLAYER 5",
+			5: "PLAYER 6"
+		};
 
-		// Add event discussion info
-		header += $("#header-infos" + liveThreadSuffix).val();
+		// Add the player lineups for team 1 and 2
+		data[0]['t1-roster'] = {}
+		data[0]['t2-roster'] = {}
+		var t1roster = "";
+		var t2roster = "";
+		for (var i = 0; i < 5; i++) {
 
-		// If we have event setting data for this event, add the event setting section
-		if (EVENTS[data[0]["event-name"].value]) {
-			console.log("adding event setting text to output");
-			header += $("#event-setting").val();
+			// Team 1
+			if ((TEAMS[team1ID][roleId[i]] != "")) {
+				if (t1roster != "") t1roster += " | ";
+				t1roster += Flagify(TEAMS[team1ID][roleId[i]]);
+			} 
+
+			// Team 2
+			if ((TEAMS[team2ID][roleId[i]] != "")) {
+				if (t2roster != "") t2roster += " | ";
+				t2roster += Flagify(TEAMS[team2ID][roleId[i]]);
+			}
 		}
+		if (t1roster != "")
+			data[0]['t1-roster'].value = "**Roster**: " + t1roster;
+		else
+			data[0]['t1-roster'].value = "";
+		if (t2roster != "")
+			data[0]['t2-roster'].value = "**Roster**: " + t2roster;
+		else
+			data[0]['t2-roster'].value = "";
 
 		// Add the coach for team 1
-		data[0]['C1'] = {};
-		if ((TEAMS[team1ID]["PLAYER 6"].endsWith('(c)'))) {
-			data[0]['C1'].value = Flagify(TEAMS[team1ID]["PLAYER 6"].split(' (')[0]);
+		data[0]['t1-coach'] = {};
+		if (TEAMS[team1ID]["COACH"] != "" && TEAMS[team1ID]["COACH"] != null) {
+			data[0]['t1-coach'].value = "**Coach**: " + Flagify(TEAMS[team1ID]["COACH"]);
 		} else {
-			data[0]['C1'].value = "-";
+			data[0]['t1-coach'].value = "";
 		}
 			
 		// Add the coach for team 2
-		data[0]['C2'] = {};
-		if (TEAMS[team2ID]["PLAYER 6"].endsWith('(c)')) {
-			data[0]['C2'].value = Flagify(TEAMS[team2ID]["PLAYER 6"].split(' (')[0]);
+		data[0]['t2-coach'] = {};
+		if (TEAMS[team1ID]["COACH"] != "" && TEAMS[team1ID]["COACH"] != null) {
+			data[0]['t2-coach'].value = "**Coach**: " + Flagify(TEAMS[team2ID]["COACH"]);
 		} else {
-			data[0]['C2'].value = "-"
+			data[0]['t2-coach'].value = "";
 		}
 
-		// Add the coach information
-		if (data[0]['C1'] != "-" || data[0]['C2'] != "-") {
-			header += $("#team-coaches").val();
+		subRoleId = {
+			0: "SUB 1",
+			1: "SUB 2",
+			2: "SUB 3",
+			3: "SUB 4",
+			4: "SUB 5",
+			5: "SUB 6"
+		}
+
+		// Add the player lineups for team 1 and 2
+		data[0]['t1-subs'] = {}
+		data[0]['t2-subs'] = {}
+		var t1subs = "";
+		var t2subs = "";
+		for (var i = 0; i < 6; i++) {
+
+			// Team 1
+			if ((TEAMS[team1ID][subRoleId[i]] != "") && (TEAMS[team1ID][subRoleId[i]] != null)) {
+				if (t1subs != "") t1subs += " | ";
+				t1subs += Flagify(TEAMS[team1ID][subRoleId[i]]);
+			} 
+
+			// Team 2
+			if ((TEAMS[team2ID][subRoleId[i]] != "") && (TEAMS[team2ID][subRoleId[i]] != null)) {
+				if (t2subs != "") t2subs += " | ";
+				t2subs += Flagify(TEAMS[team2ID][subRoleId[i]]);
+			}
+		}
+
+		if (t1subs != "")
+			data[0]['t1-subs'].value = "**Subs/Benched**: " + t1subs;
+		else
+			data[0]['t1-subs'].value = "";
+		if (t2subs != "")
+			data[0]['t2-subs'].value = "**Subs/Benched**: " + t1subs;
+		else
+			data[0]['t2-subs'].value = "";
+
+		// If there's TEAM data for these team names, add their team information
+		if (TEAMS[team1ID] && TEAMS[team2ID]) {
+			header += $("#header-teams-infos").val();
 		}
 
 		// Add veto information
@@ -1134,7 +1267,7 @@ $(document).ready(function () {
 		} else {
 			$(this).css('border-color', '#fffb36');
 			teamFullName = teamID;
-			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
+			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", "SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 		}
 		$('#Team1name').val(teamFullName);
 		$('#series-result').data('blue-team', teamFullName);
@@ -1150,7 +1283,7 @@ $(document).ready(function () {
 		} else {
 			$(this).css('border-color', '#fffb36');
 			teamFullName = teamID;
-			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
+			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", "SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 		}
 		$('#Team2name').val(teamFullName);
 		$('#series-result').data('red-team', teamFullName);
@@ -1236,7 +1369,7 @@ $(document).ready(function () {
 
 		// Team 1 on HLTV is not in database, create new team entry
 		if (!foundTeam1) {
-			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
+			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", "SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 			$(this).closest('div.veto-tab').find('input.maint1').val(TEAMS[team1Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint1').blur();
 			team1Name = TEAMS[team1Name]["Name"];
@@ -1244,7 +1377,7 @@ $(document).ready(function () {
 
 		// Team 2 on HLTV is not in database, create new team entry
 		if (!foundTeam2) {
-			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
+			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, "PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", "SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", "Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", "Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":""}
 			$(this).closest('div.veto-tab').find('input.maint2').val(TEAMS[team2Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint2').blur();
 			team2Name = TEAMS[team2Name]["Name"];
@@ -1341,7 +1474,7 @@ $(document).ready(function () {
 			}
 
 			// '%' is in the line - must be one of the lines of statistics
-			if (!stats_finished && hltvTableLines[line].indexOf("%") != -1) {
+			if (!stats_finished && hltvTableLines[line].indexOf("%") != -1 && j != "X") {
 				j += 1;
 				if (j == 10) {
 					j = "X";
@@ -1353,12 +1486,18 @@ $(document).ready(function () {
 					return el != "";
 				});
 
-				// Get the K, D, ADR, Swing, and Rating
+				// Get the K, D, ADR, and Rating
 				$(this).closest('div.veto-tab').find('input.K' + j).val(lineVals[0]);
 				$(this).closest('div.veto-tab').find('input.D' + j).val(lineVals[1]);
 				$(this).closest('div.veto-tab').find('input.ADR' + j).val(lineVals[3]);
-				$(this).closest('div.veto-tab').find('input.SW' + j).val(lineVals[2]);
 				$(this).closest('div.veto-tab').find('input.RA' + j).val(lineVals[5]);
+
+				// Get the swing, including adding back the "-" that was removed by splitting lineVals.
+				var swing = lineVals[2];
+				if (swing[0] != "+") {
+					swing = "-" + swing;
+				}
+				$(this).closest('div.veto-tab').find('input.SW' + j).val(swing);
 
 				// Get the player for these stats
 				playerName = $(this).closest('div.veto-tab').find('input.P' + j).val();
@@ -1402,7 +1541,7 @@ $(document).ready(function () {
 			}
 
 			// Past the stats table
-			if (hltvTableLines[line].indexOf("Lineups") != -1) stats_finished = true;
+			if ((hltvTableLines[line].indexOf("Lineups") != -1) || (hltvTableLines[line].indexOf("Player of the match") != -1)) stats_finished = true;
 
 			// The VRS Prediction Info started
 			if (!vrs_finished && !vrs_started && hltvTableLines[line].indexOf("VRS result") != -1) {
@@ -2047,7 +2186,7 @@ $.post("../php/getJSON.php", {
 var EVENTS = {}
 
 $.post("../php/getJSON.php", {
-	feed: "https://docs.google.com/spreadsheets/d/1op6sU2qE8Gugtn6SLhiTJDaFqQFPN_GlmEs8cHNeO9M/pub?output=csv"
+	feed: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTIZsUyfKpuANjFhteP8aJWSacnLBLTPCtD6Gc8ESy6Bphvd57VSCfB_xwvjw_RsY_mvoFffbDPe25d/pub?output=csv"
 	//feed: "../csgo/csv/Events.csv"
 }).done(function (d) {
 	

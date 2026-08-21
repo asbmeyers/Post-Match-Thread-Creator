@@ -857,9 +857,17 @@
 
 </textarea>
 
-	<textarea id="event-setting">
-**%event-name**: %event-flag %event-city (%event-prize %event-type) | [Liquipedia][%event-liquipedia] | HLTV[%event-hltv]  
-  
+	<textarea id="event-info">
+### Event Information
+
+**%event-name** | %event-flag %event-city (%event-prize %event-type) | [Liquipedia](%event-wiki) | [HLTV](%event-hltv)%event-reddit  
+
+%event-streams
+
+&amp;nbsp;
+
+---  
+
 </textarea>
 
 	<textarea id="vrs-prediction">
@@ -874,21 +882,20 @@ Team | Rank | Diff | Total
 
 &amp;nbsp;
 
------
-</textarea>
-
-	<textarea id="event-setting">
-
-**Event Setting**: %event-flag %event-city (%event-prize %event-type)  
+---
 
 </textarea>
 
-	<textarea id="team-coaches">
+	<textarea id="team-rosters">
 
-|**Team**|**Main Roster**|**Subs/Bench**|**Coach**|  
-:--|:--:|  
-%IconStatsT1%Team1Initials** | %P1 %P2 %P3 %P4 %P5 | %SBP | %C1 |  
-%IconStatsT2%Team2Initials** | %P6 %P7 %P8 %P9 %PX | %SBP | %C2 |  
+|**Team**|**Main Roster**|**Coach**|  
+:--|:--|:--|
+%IconStatsT1%Team1Initials** | %t1-roster | %C1 |  
+%IconStatsT2%Team2Initials** | %t2-roster | %C2 |  
+
+^Note: ^Above ^rosters ^do ^not ^reflect ^temporary ^subs ^and ^may ^be ^out ^of ^date ^if ^recent ^changes ^were ^made
+
+&amp;nbsp;
 
 </textarea>
 
@@ -914,41 +921,55 @@ Team | Rank | Diff | Total
 -->
 
 	<textarea id="header-teams-infos">
+### Team Information
 
 %team1info  
-%team2info
+%t1-roster  
+%t1-coach  
+%t1-subs  
 
------       
-    
+%team2info  
+%t2-roster  
+%t2-coach  
+%t2-subs  
+
+^Note: ^Above ^rosters ^do ^not ^reflect ^temporary ^subs ^and ^may ^be ^out ^of ^date ^if ^recent ^changes ^were ^made
+
+&amp;nbsp;
+
 </textarea>
 
 	<textarea id="vetoes1">
 -----
 
-&amp;nbsp;
+###Map Vetoes
 
 |%IconVWTA1|**MAP**|%IconVWTA2|
 |:--:|:--:|:--:|
 |%ML1|%MP1|%MR1|
+
+&amp;nbsp;
 
 </textarea>
 
 	<textarea id="vetoes2">
 -----
 
-&amp;nbsp;
+###Map Vetoes
 
 |%IconVWTA1|**MAP**|%IconVWTA2|
 |:--:|:--:|:--:|
 |%ML1|%MP1|%MR1|
 |%ML2|%MP2|%MR2|
 
+&amp;nbsp;
+
 </textarea>
 
 	<textarea id="vetoes3">
 -----
 
-&amp;nbsp;
+###Map Vetoes
 
 |%IconVWTA1|**MAP**|%IconVWTA2|
 |:--:|:--:|:--:|
@@ -956,12 +977,14 @@ Team | Rank | Diff | Total
 |%ML2|%MP2|%MR2|
 |%ML3|%MP3|%MR3|
 
+&amp;nbsp;
+
 </textarea>
 
 	<textarea id="vetoes4">
 -----
 
-&amp;nbsp;
+###Map Vetoes
 
 |%IconVWTA1|**MAP**|%IconVWTA2|
 |:--:|:--:|:--:|
@@ -970,12 +993,14 @@ Team | Rank | Diff | Total
 |%ML3|%MP3|%MR3|
 |%ML4|%MP4|%MR4|
 
+&amp;nbsp;
+
 </textarea>
 
 	<textarea id="vetoes5">
 -----
 
-&amp;nbsp;
+###Map Vetoes
 
 |%IconVWTA1|**MAP**|%IconVWTA2|
 |:--:|:--:|:--:|
@@ -985,12 +1010,14 @@ Team | Rank | Diff | Total
 |%ML4|%MP4|%MR4|
 |%ML5|%MP5|%MR5|
 
+&amp;nbsp;
+
 </textarea>
 
 	<textarea id="vetoes6">
 -----
 
-&amp;nbsp;
+###Map Vetoes
 
 |%IconVWTA1|**MAP**|%IconVWTA2|
 |:--:|:--:|:--:|
@@ -1001,12 +1028,14 @@ Team | Rank | Diff | Total
 |%ML5|%MP5|%MR5|
 |%ML6|%MP6|%MR6|
 
+&amp;nbsp;
+
 </textarea>
 
 	<textarea id="vetoes7">
 -----
 
-&amp;nbsp;
+###Map Vetoes
 
 |%IconVWTA1|**MAP**|%IconVWTA2|
 |:--:|:--:|:--:|
@@ -1018,15 +1047,16 @@ Team | Rank | Diff | Total
 |%ML6|%MP6|%MR6|
 |%ML7|%MP7|%MR7|
 
+&amp;nbsp;
+
 </textarea>
 
 	<textarea id="vetoes-not-available">
 -----
 
+###The vetoes for this match are not available
+
 &amp;nbsp;
-
-#The vetoes for this match are not available
-
 
 </textarea>
 
@@ -1186,17 +1216,17 @@ Team | Rank | Diff | Total
 |**Team**|**K-D**|**ADR**|**Swing**|**Rating**|
 |:--|--:|--:|--:|--:|--:|
 |&amp;nbsp;&amp;nbsp;%IconStatsT1%Team1Initials**||||%RAT1|
-|%P1o|%K1-%D1|%ADR1|%SW1|%RA1|
-|%P2o|%K2-%D2|%ADR2|%SW2|%RA2|
-|%P3o|%K3-%D3|%ADR3|%SW3|%RA3|
-|%P4o|%K4-%D4|%ADR4|%SW4|%RA4|
-|%P5o|%K5-%D5|%ADR5|%SW5|%RA5|
+|%P1|%K1-%D1|%ADR1|%SW1|%RA1|
+|%P2|%K2-%D2|%ADR2|%SW2|%RA2|
+|%P3|%K3-%D3|%ADR3|%SW3|%RA3|
+|%P4|%K4-%D4|%ADR4|%SW4|%RA4|
+|%P5|%K5-%D5|%ADR5|%SW5|%RA5|
 |&amp;nbsp;&amp;nbsp;%IconStatsT2%Team2Initials**||||%RAT2|
-|%P6o|%K6-%D6|%ADR6|%SW6|%RA6|
-|%P7o|%K7-%D7|%ADR7|%SW7|%RA7|
-|%P8o|%K8-%D8|%ADR8|%SW8|%RA8|
-|%P9o|%K9-%D9|%ADR9|%SW9|%RA9|
-|%PXo|%KX-%DX|%ADRX|%SWX|%RAX|
+|%P6|%K6-%D6|%ADR6|%SW6|%RA6|
+|%P7|%K7-%D7|%ADR7|%SW7|%RA7|
+|%P8|%K8-%D8|%ADR8|%SW8|%RA8|
+|%P9|%K9-%D9|%ADR9|%SW9|%RA9|
+|%PX|%KX-%DX|%ADRX|%SWX|%RAX|
 
 #[HLTV Match Page](%hltv-url)
 
