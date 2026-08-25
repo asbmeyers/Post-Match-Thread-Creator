@@ -18,13 +18,14 @@ More detail can be found in pmtc.php and pmtc.js. The below template is an examp
 #%T1 %IconT1 [%series-result](%hltv-url) %IconT2 %T2  
 
 **%pergame-mapi:** %mapi-result  
-&nbsp;
+
+&amp;nbsp;
 
 **%IconWinner %WinnerName %series-context1**  
 
 **%IconLoser %LoserName %series-context2**    
 
-&nbsp;
+&amp;nbsp;
 
 -----
 ### Predicted VRS Impact  
@@ -36,7 +37,7 @@ Team | Rank | Diff | Total
   
 ^Note: ^VRS ^officially ^updates ^once ^per ^month. ^This ^is ^simply ^a ^prediction ^that ^might ^not ^take ^into ^account ^all ^factors ^that ^go ^into ^VRS ^calculations.
 
-&nbsp;
+&amp;nbsp;
 
 ---
 
@@ -46,7 +47,7 @@ Team | Rank | Diff | Total
 
 **Streams** | [YouTube](%youtube-link) | [Twitch A](%twitcha-link) | [Twitch B](%twitchb-link) | [Twitch C](%twitchc-link) | [Twitch D](%twitchd-link) | [Kick A](%kicka-link) | [Kick B](%kickb-link) | [Kick C](%kickc-link) | [Kick D](%kickd-link)
 
-&nbsp;
+&amp;nbsp;
 
 ---  
 
@@ -65,7 +66,7 @@ Team | Rank | Diff | Total
 
 ^Note: ^Above ^rosters ^do ^not ^reflect ^temporary ^subs ^and ^may ^be ^out ^of ^date ^if ^recent ^changes ^were ^made
 
-&nbsp;
+&amp;nbsp;
 
 -----
 
@@ -81,8 +82,7 @@ Team | Rank | Diff | Total
 |%ML6|%MP6|%MR6|
 |%ML7|%MP7|%MR7|
 
-&nbsp;
-
+&amp;nbsp;
 
 ---
 
@@ -105,16 +105,15 @@ Team | Rank | Diff | Total
 
 ###[HLTV Match Page](%hltv-url)
 
-
-&nbsp;
+&amp;nbsp;
 
 ---
 
-&nbsp;
+&amp;nbsp;
 
 ###MAP i: %game-map
 
-&nbsp;
+&amp;nbsp;
 
 |Team|CT|T|OT1^T:CT|OT2^CT:T|OT3^T:CT|OT4^CT:T|OT5^T:CT|Total|
 |:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
@@ -122,7 +121,7 @@ Team | Rank | Diff | Total
 ||**T**|**CT**|**OT1^CT:T**|**OT2^T:CT**|**OT3^CT:T**|**OT4^T:CT**|**OT5^CT:T**|
 |%IconStatsT2%Team2Initials**|%R1|%R2|%R3:%R4|%R5:%R6|%R7:%R8|%R9:%RX0|%RX1:%RX2|**%RRoundst**|
 
-&nbsp;
+&amp;nbsp;
 
 |**Team**|**K-D**|**ADR**|**Swing**|**Rating**|
 |:--|--:|--:|--:|--:|--:|
@@ -141,9 +140,7 @@ Team | Rank | Diff | Total
 
 ###[%game-map Detailed Stats](%match-history)
 
-
-&nbsp;
-
+&amp;nbsp;
 
 ---
 
@@ -151,7 +148,7 @@ Team | Rank | Diff | Total
 
 [%highlight-title](%highlight-link)  
 
-&nbsp;
+&amp;nbsp;
 
 ---
 
