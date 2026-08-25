@@ -804,8 +804,6 @@
 </textarea>
 -->
 
-
-<!-- possible future implementation to automatically pick winner -->
 	<textarea id="header-series-context1">
 &amp;nbsp;
 
@@ -860,7 +858,7 @@
 	<textarea id="event-info">
 ### Event Information
 
-**%event-name** | %event-flag %event-city (%event-prize %event-type) | [Liquipedia](%event-wiki) | [HLTV](%event-hltv)%event-reddit  
+**%event-name** | %event-flag %event-city (%event-prize %event-type)%event-links 
 
 %event-streams
 
@@ -1228,7 +1226,7 @@ Team | Rank | Diff | Total
 |%P9|%K9-%D9|%ADR9|%SW9|%RA9|
 |%PX|%KX-%DX|%ADRX|%SWX|%RAX|
 
-#[HLTV Match Page](%hltv-url)
+###[HLTV Match Page](%hltv-url)
 
 </textarea>
 
@@ -1249,7 +1247,7 @@ Team | Rank | Diff | Total
 |%P9o|%K9-%D9|%ADR9|%SW9|%RA9|
 |%PXo|%KX-%DX|%ADRX|%SWX|%RAX|
 
-#[%game-map Detailed Stats](%match-history)
+###[%game-map Detailed Stats](%match-history)
 
 </textarea>
 
@@ -1270,7 +1268,7 @@ Team | Rank | Diff | Total
 |%P9o|%K9-%D9|
 |%PXo|%KX-%DX|
 
-#[%game-map Detailed Stats](%match-history)
+###[%game-map Detailed Stats](%match-history)
 
 </textarea>
 
@@ -1283,7 +1281,7 @@ Team | Rank | Diff | Total
 |&amp;nbsp;&amp;nbsp;%IconStatsT2%Team2Initials**|
 |%P6o|%K6-%D6|
 
-#[%game-map Detailed Stats](%match-history)
+###[%game-map Detailed Stats](%match-history)
 
 </textarea>
 
@@ -1298,7 +1296,7 @@ Team | Rank | Diff | Total
 |%P6o|%K6-%D6|
 |%P7o|%K7-%D7|
 
-#[%game-map Detailed Stats](%match-history)
+###[%game-map Detailed Stats](%match-history)
 
 </textarea>
 
@@ -1315,7 +1313,7 @@ Team | Rank | Diff | Total
 |%P7o|%K7-%D7|
 |%P8o|%K8-%D8|
 
-#[%game-map Detailed Stats](%match-history)
+###[%game-map Detailed Stats](%match-history)
 
 </textarea>
 
@@ -1334,7 +1332,7 @@ Team | Rank | Diff | Total
 |%P8o|%K8-%D8|
 |%P9o|%K9-%D9|
 
-#[%game-map Detailed Stats](%match-history)
+###[%game-map Detailed Stats](%match-history)
 
 </textarea>
 
@@ -1348,6 +1346,8 @@ Team | Rank | Diff | Total
 
 	<textarea id="last-transition">
 
+&amp;nbsp;
+
 ---
 
 </textarea>
@@ -1356,6 +1356,8 @@ Team | Rank | Diff | Total
 #Highlights
 
 %highlights
+
+&amp;nbsp;
 
 ---
 

@@ -1342,7 +1342,7 @@ window.onbeforeunload = function () {
 
 var TEAMS = {};
 
-$.post("../php/getJSON.php", {
+$.post("getJSON.php", {
 	feed: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR5IYr0mCc-2Qut05BVRqfV_cwinWaD3GOLR-4R9JohvED5gJJPv0VeTxIkfm10LzSTX9zUYHQWvHa/pub?gid=0&single=true&output=csv"
 }).done(function (d) {
 	

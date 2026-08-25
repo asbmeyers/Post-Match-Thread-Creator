@@ -1,33 +1,35 @@
-Name,Flag,City,Prize
-StarLadder StarSeries Fall 2026 North America Closed Qualifier,🌎,North America,
-StarLadder StarSeries Fall 2026 South America Closed Qualifier,🌎,South America,
-ESL Challenger League Season 52 Asia Cup 1,🌏,Asia,
-ESL Challenger League Season 52 Oceania Cup 1,🌏,Oceania,
-ESL Challenger League Season 52 Europe Cup 2,🇪🇺,Europe,$7k
-StarLadder StarSeries Fall 2026 Europe Closed Qualifier,🇪🇺,Europe,
-BLAST Bounty 2026 Season 2,🇪🇺,Europe,$1.15m
-DFRAG HyperX Nationals 2026,🇦🇺,Brisbane,~$7k
-BetBoom RUSH B Summit Season 4,🇧🇷,São Paulo,$50k
-BB RUSH B Summit Season 4,🇧🇷,São Paulo,$50k
-XSE Pro League Guangzhou 2026,🇨🇳,Guangzhou,$1m
-Tipsport Open Cup 1,🇨🇿,Prague,~$12.5k
-POWER Ligaen Season 32,🇩🇰,Odense,~$16k
-Elisa Esports BreakOut Series 1,🇫🇮,Helsinki,~$17k
-Esports World Cup 2026 Open Qualifier,🇫🇷,Paris,$100k
-Esports World Cup 2026,🇫🇷,Paris,$2m
-IEM Cologne Major 2026 Stage 1,🇩🇪,Cologne,$1.25m
-IEM Cologne Major 2026 Stage 2,🇩🇪,Cologne,$1.25m
-IEM Cologne Major 2026,🇩🇪,Cologne,$1.25m
-BRO Summer Cup 2026,🇰🇿,Almaty,$12k
-XP Game Fest 2026 Finals,🇽🇰,Pristina,$10k
-Urban Riga Open Season 5,🇱🇻,Riga,$5k
-BLAST Bounty 2026 Season 2 Finals,🇲🇹,Malta,$1.15m
-BC Game Masters Championship Season 2,🇵🇹,Vila Nova de Gaia,$50k
-BC Masters Championship Season 2,🇵🇹,Vila Nova de Gaia,$50k
-Digital Crusade Super DraculaN Season 1,🇷🇴,Bucharest,$150k
-WINLINE MPKBK CIS LAN Season 6,🇷🇺,Moscow,$40k
-Stake Ranked Episode 3,🇪🇸,Barcelona,$100k
-ROG JOURNEY Summer 2026,🇸🇪,Jönköping,$21k
-Stake Pulse Beat I,🇸🇪,Stockholm,$60k
-IEM Atlanta 2026,🇺🇸,Atlanta,$1m
-1xBet FRAG Season 17,🇺🇿,Tashkent,$15k
+Name,Flag,City,Prize,Wiki,HLTV,Reddit,Twitch A,Twitch B,Twitch C,Twitch D,YouTube,Kick A,Kick B,Kick C,Kick D
+StarLadder StarSeries Fall 2026 North America Closed Qualifier,🌎,North America,$0,,,,,,,,,,,,
+StarLadder StarSeries Fall 2026 South America Closed Qualifier,🌎,South America,$0,,,,,,,,,,,,
+IEM Beijing 2026 Asia Closed Qualifier,🌏,Asia,$0,https://liquipedia.net/counterstrike/Intel_Extreme_Masters/2026/Beijing/Qualifier/Asia,https://www.hltv.org/events/9295/iem-beijing-2026-asia-closed-qualifier,,,,,,,,,,
+FISSURE Playground 3 Asia Closed Qualifier,🌏,Asia,$0,https://liquipedia.net/counterstrike/GGMEDIA/Challenger_Series/Season_2,https://www.hltv.org/events/9333/fissure-playground-3-asia-closed-qualifier,,,,,,,,,,
+GLuck Moscow Cyber Games 2026 Asia Closed Qualifier,🌏,Asia,$0,https://liquipedia.net/counterstrike/Moscow_Cyber_Games/2026/Asia,https://www.hltv.org/events/9348/gluck-moscow-cyber-games-2026-asia-closed-qualifier,,https://www.twitch.tv/gluck_esports_2,https://www.twitch.tv/gluck_esports,,,,https://kick.com/gluck-esports-2,https://kick.com/gluck-esports,,
+ESL Challenger League Season 52 Oceania Cup 1,🌏,Oceania,$0,,,,,,,,,,,,
+ESL Challenger League Season 52 Europe Cup 2,🇪🇺,Europe,$7k,,,,,,,,,,,,
+GLuck Moscow Cyber Games 2026 Closed Qualifier,🇪🇺,Europe,$0,https://liquipedia.net/counterstrike/Moscow_Cyber_Games/2026/Europe,https://www.hltv.org/events/9349/gluck-moscow-cyber-games-2026-closed-qualifier,,https://www.twitch.tv/gluck_esports,,,,,https://kick.com/gluck-esports,,,
+BLAST Bounty 2026 Season 2,🇪🇺,Europe,$1.15m,,,,,,,,,,,,
+DFRAG HyperX Nationals 2026,🇦🇺,Brisbane,~$7k,,,,,,,,,,,,
+BetBoom RUSH B Summit Season 4,🇧🇷,São Paulo,$50k,,,,,,,,,,,,
+BB RUSH B Summit Season 4,🇧🇷,São Paulo,$50k,,,,,,,,,,,,
+XSE Pro League Guangzhou 2026,🇨🇳,Guangzhou,$1m,,,,,,,,,,,,
+Tipsport Open Cup 1,🇨🇿,Prague,~$12.5k,,,,,,,,,,,,
+POWER Ligaen Season 32,🇩🇰,Odense,~$16k,,,,,,,,,,,,
+Elisa Esports BreakOut Series 1,🇫🇮,Helsinki,~$17k,,,,,,,,,,,,
+Esports World Cup 2026 Open Qualifier,🇫🇷,Paris,$100k,,,,,,,,,,,,
+Esports World Cup 2026,🇫🇷,Paris,$2m,https://liquipedia.net/counterstrike/Esports_World_Cup/2026,https://www.hltv.org/events/8261/esports-world-cup-2026,,https://www.twitch.tv/ewc_stcarena_en,https://www.twitch.tv/ewc_stcarena_en2,,,https://www.youtube.com/channel/UCENNtCRTPTdH_IGXs42LuHQ/streams,,,,
+IEM Cologne Major 2026 Stage 1,🇩🇪,Cologne,$1.25m,,,,,,,,,,,,
+IEM Cologne Major 2026 Stage 2,🇩🇪,Cologne,$1.25m,,,,,,,,,,,,
+IEM Cologne Major 2026,🇩🇪,Cologne,$1.25m,,,,,,,,,,,,
+BRO Summer Cup 2026,🇰🇿,Almaty,$12k,,,,,,,,,,,,
+XP Game Fest 2026 Finals,🇽🇰,Pristina,$10k,,,,,,,,,,,,
+Urban Riga Open Season 5,🇱🇻,Riga,$5k,,,,,,,,,,,,
+BLAST Bounty 2026 Season 2 Finals,🇲🇹,Malta,$1.15m,,,,,,,,,,,,
+BLAST Open Porto 2026,🇩🇰,Copenhagen,$1.1m,https://liquipedia.net/counterstrike/BLAST/Open/2026/Fall,https://www.hltv.org/events/8249/blast-open-porto-2026,,https://www.twitch.tv/BLASTPremier,,,,https://www.youtube.com/BLASTPremier/live,https://kick.com/BLASTPremier,,,
+BC Masters Championship Season 2,🇵🇹,Vila Nova de Gaia,$50k,,,,,,,,,,,,
+Digital Crusade Super DraculaN Season 1,🇷🇴,Bucharest,$150k,,,,,,,,,,,,
+WINLINE MPKBK CIS LAN Season 6,🇷🇺,Moscow,$40k,,,,,,,,,,,,
+Stake Ranked Episode 3,🇪🇸,Barcelona,$100k,,,,,,,,,,,,
+ROG JOURNEY Summer 2026,🇸🇪,Jönköping,$21k,,,,,,,,,,,,
+Stake Pulse Beat I,🇸🇪,Stockholm,$60k,,,,,,,,,,,,
+FRAG Midwest St. Louis 2026,🇺🇸,St. Louis,$10k,https://liquipedia.net/counterstrike/Valve_Tier_2_Events,https://www.hltv.org/events/9265/frag-midwest-st-louis-2026,,,,,,,https://kick.com/frag,,,
+1xBet FRAG Season 17,🇺🇿,Tashkent,$15k,,,,,,,,,,,,

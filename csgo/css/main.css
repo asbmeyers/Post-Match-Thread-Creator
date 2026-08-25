@@ -24,6 +24,12 @@ textarea {
     color: #222;
 }
 
+input,
+select,
+textarea {
+    background-color: #999999;
+}
+
 html {
     font-size: 1em;
     line-height: 1.4;
@@ -629,14 +635,14 @@ input[readonly] {
 .teams>div:first-of-type,
 .bans .blue-bans,
 .pps>div:first-of-type {
-    background-color: #9090D4;
+    background-color: rgb(95, 95, 247);
     padding: 15px 0px 10px 0px;
 }
 
 .teams>div:last-of-type,
 .bans .red-bans,
 .pps>div:last-of-type {
-    background-color: #D49090;
+    background-color: #f15a5a;
     padding: 15px 0px 10px 0px;
 }
 
@@ -1175,12 +1181,13 @@ body.night #btn-logout {
 /** Melon mode **/
 
 body.melon {
-    background-color: #94D4A8;
-    color: black;
+    background-color: #074307;
+    color: rgb(81, 17, 17);
 }
 
 body.melon .hr {
     border-top: black;
+
 }
 
 body.melon a,
@@ -1189,14 +1196,15 @@ body.melon a:visited {
 }
 
 body.melon #container {
-    border: 2px solid black;
+    border: 2px solid #fd6c53;
 }
 
 body.melon input,
 body.melon select,
 body.melon textarea {
-    background-color: #DAD8A7;
-    color: black;
+    background-color: #fd6c53;
+    color: rgb(81, 17, 17);
+    border: 2px solid #ff8e8e;
 }
 
 body.melon *::-webkit-input-placeholder {
@@ -1204,34 +1212,44 @@ body.melon *::-webkit-input-placeholder {
 }
 
 body.melon #tabList li {
-    background-color: #EFFAB4;
-}
-
-body.melon #tabList li.selected {
-    color: #EFFAB4;
+    background-color: #56d754;
 }
 
 body.melon .white_content {
     background-color: #7FC7AF;
+    color: #0f5b41;
 }
 
 body.melon #tabList li {
     color: black;
 }
 
+body.melon #top-div {
+    color: #fd6c53;
+}
+
 body.melon #tabList li.selected,
 body.melon #tabList li:hover {
-    background-color: #D1F2A5;
-    color: grey;
+    background-color: #ab9700;
 }
 
 body.melon #div-tablist button {
     background-color: #f08080;
-    color: green;
+    color: #0f5b41;
+}
+
+body.melon .teams>div:first-of-type,
+body.melon .pps>div:first-of-type {
+    background-color: #308764;
+}
+
+body.melon .teams>div:last-of-type,
+body.melon .pps>div:last-of-type {
+    background-color: #bc0e0e;
 }
 
 body.melon div.white_content a.close {
-    color: #fff;
+    color: #0f5b41;
 }
 
 body.melon #btn-logout {

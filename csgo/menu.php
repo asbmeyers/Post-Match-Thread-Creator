@@ -76,13 +76,6 @@
 			</strong>
 		</li>
 		<?php } ?>
-		<?php if ($guest || $validUser) { ?>
-		<li>
-		<strong class="about-btn">
-			<a href="http://hltv.org">HLTV</a>
-		</strong>
-		</li>
-		<?php } ?>
 		<li>
 			<strong class="about-btn" onclick="showPopup('about-popup');">
 			About
