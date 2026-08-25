@@ -4,7 +4,7 @@ The PMTC is a website designed to facilitate the creation of formatted Post-Matc
 
 ## Databases
 
-Team and event information databases are included as csv files, but more up to date versions can also be downloaded from here. Most of this data is taken from Liquipedia, but some manual curation is additionally added for specific cases like team names or links that are banned on Reddit.
+Team and event information databases are included as csv files, but more up to date versions can also be downloaded from here. Most of this data is taken from Liquipedia, but some manual curation is used for specific cases like team names or links that are banned on Reddit. Also, using these databases means the system does not need to regularly scrape Liquipedia.
 
 [Team Information](https://docs.google.com/spreadsheets/d/e/2PACX-1vRFFzItpu4lT2eE6ivgvZdA-rMkB_sYT5LSWicXXEnkt-2mdMwThMbmAj0z8e9JTzWawtZBsDCehNeJ/pub?output=csv)
 
