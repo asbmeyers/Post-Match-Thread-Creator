@@ -112,7 +112,7 @@ Team | Rank | Diff | Total
 
 &nbsp;
 
-###MAP i: %pergame-mapi
+###MAP i: %game-map
 
 &nbsp;
 
