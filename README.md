@@ -2,6 +2,14 @@
 
 The PMTC is a website designed to facilitate the creation of formatted Post-Match Discussions for Counter-Strike matches on r/GlobalOffensive.
 
+## Databases
+
+Team and event information databases are included as csv files, but more up to date versions can also be downloaded from here. Most of this data is taken from Liquipedia, but some manual curation is additionally added for specific cases like team names or links that are banned on Reddit.
+
+[Team Information](https://docs.google.com/spreadsheets/d/e/2PACX-1vRFFzItpu4lT2eE6ivgvZdA-rMkB_sYT5LSWicXXEnkt-2mdMwThMbmAj0z8e9JTzWawtZBsDCehNeJ/pub?output=csv)
+
+[Event Information](https://docs.google.com/spreadsheets/d/e/2PACX-1vTIZsUyfKpuANjFhteP8aJWSacnLBLTPCtD6Gc8ESy6Bphvd57VSCfB_xwvjw_RsY_mvoFffbDPe25d/pub?output=csv)
+
 ## Template
 
 More detail can be found in pmtc.php and pmtc.js. The below template is an example of the most commonly used portions, but it is not an exact reflection of how the formatting is built under the hood, and does not represent some of the more niche match-specific aspects of the formatting.
@@ -126,17 +134,17 @@ Team | Rank | Diff | Total
 |**Team**|**K-D**|**ADR**|**Swing**|**Rating**|
 |:--|--:|--:|--:|--:|--:|
 |&amp;nbsp;&amp;nbsp;%IconStatsT1%Team1Initials**||||%RAT1|
-|%P1o|%K1-%D1|%ADR1|%SW1|%RA1|
-|%P2o|%K2-%D2|%ADR2|%SW2|%RA2|
-|%P3o|%K3-%D3|%ADR3|%SW3|%RA3|
-|%P4o|%K4-%D4|%ADR4|%SW4|%RA4|
-|%P5o|%K5-%D5|%ADR5|%SW5|%RA5|
+|%P1|%K1-%D1|%ADR1|%SW1|%RA1|
+|%P2|%K2-%D2|%ADR2|%SW2|%RA2|
+|%P3|%K3-%D3|%ADR3|%SW3|%RA3|
+|%P4|%K4-%D4|%ADR4|%SW4|%RA4|
+|%P5|%K5-%D5|%ADR5|%SW5|%RA5|
 |&amp;nbsp;&amp;nbsp;%IconStatsT2%Team2Initials**||||%RAT2|
-|%P6o|%K6-%D6|%ADR6|%SW6|%RA6|
-|%P7o|%K7-%D7|%ADR7|%SW7|%RA7|
-|%P8o|%K8-%D8|%ADR8|%SW8|%RA8|
-|%P9o|%K9-%D9|%ADR9|%SW9|%RA9|
-|%PXo|%KX-%DX|%ADRX|%SWX|%RAX|
+|%P6|%K6-%D6|%ADR6|%SW6|%RA6|
+|%P7|%K7-%D7|%ADR7|%SW7|%RA7|
+|%P8|%K8-%D8|%ADR8|%SW8|%RA8|
+|%P9|%K9-%D9|%ADR9|%SW9|%RA9|
+|%PX|%KX-%DX|%ADRX|%SWX|%RAX|
 
 ###[%game-map Detailed Stats](%match-history)
 
