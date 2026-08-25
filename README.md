@@ -8,7 +8,9 @@ More detail can be found in pmtc.php and pmtc.js. The below template is an examp
 
 ### Title
 
+```
 %T1 vs %T2 / %event-name - %match-type / Post-Match Discussion
+```
 
 ### Body
 
