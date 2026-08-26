@@ -152,7 +152,7 @@ Team | Rank | Diff | Total
 
 ---
 
-#Highlights
+###Highlights
 
 [%highlight-title](%highlight-link)  
 
