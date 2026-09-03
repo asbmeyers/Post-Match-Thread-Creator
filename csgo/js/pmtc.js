@@ -349,16 +349,16 @@ $(document).ready(function () {
 
 		// If the team isn't already in the database, add them to the database
 		if (!TEAMS[team1GID])
-			TEAMS[team1GID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1GID, "HLTV Name":team1GID, "Name":team1GID, 
+			TEAMS[team1GID] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":team1GID, "HLTV Name":team1GID, "Name":team1GID, 
 			"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 			"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-			"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+			"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 			"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 		if (!TEAMS[team2GID])
-			TEAMS[team2GID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2GID, "HLTV Name":team2GID, "Name":team2GID, 
+			TEAMS[team2GID] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":team2GID, "HLTV Name":team2GID, "Name":team2GID, 
 			"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 			"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-			"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+			"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 			"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 
 		// event name
@@ -812,7 +812,6 @@ $(document).ready(function () {
 			T1ut.os = ""; // Official Site
 			T1ut.st = ""; // Steam
 			T1ut.fa = ""; // Faceit
-			T1ut.di = ""; // Discord
 			T1ut.tw = ""; // Twitter
 			T1ut.fb = ""; // Facebook
 			T1ut.ig = ""; // Instagram
@@ -837,9 +836,6 @@ $(document).ready(function () {
 			}
 			if (TEAMS[T1ut.string]["Faceit"] != "" && TEAMS[T1ut.string]["Faceit"] != null) {
 				T1ut.fa = " | [Faceit](" + TEAMS[T1ut.string]["Faceit"] + ")" || "";
-			}
-			if (TEAMS[T1ut.string]["Discord"] != "" && TEAMS[T1ut.string]["Discord"] != null) {
-				T1ut.di = " | [Discord](" + TEAMS[T1ut.string]["Discord"] + ")" || "";
 			}
 			if (TEAMS[T1ut.string]["Twitter"] != "" && TEAMS[T1ut.string]["Twitter"] != null) {
 				T1ut.tw = " | [Twitter](" + TEAMS[T1ut.string]["Twitter"] + ")" || "";
@@ -870,7 +866,7 @@ $(document).ready(function () {
 			}
 
 			data[0]["team1info"] = {
-				value: Iconify(team1GID) + " **" + team1GID + "**" + T1ut.wk + T1ut.hl + T1ut.os + T1ut.st + T1ut.fa + T1ut.di + T1ut.tw + T1ut.fb + T1ut.ig + T1ut.tk + T1ut.wb + T1ut.yt + T1ut.tv + T1ut.bi + T1ut.sb
+				value: Iconify(team1GID) + " **" + team1GID + "**" + T1ut.wk + T1ut.hl + T1ut.os + T1ut.st + T1ut.fa + T1ut.tw + T1ut.fb + T1ut.ig + T1ut.tk + T1ut.wb + T1ut.yt + T1ut.tv + T1ut.bi + T1ut.sb
 			};
 		}
 
@@ -885,7 +881,6 @@ $(document).ready(function () {
 			T2ut.os = ""; // Official Site
 			T2ut.st = ""; // Steam
 			T2ut.fa = ""; // Faceit
-			T2ut.di = ""; // Discord
 			T2ut.tw = ""; // Twitter
 			T2ut.fb = ""; // Facebook
 			T2ut.ig = ""; // Instagram
@@ -910,9 +905,6 @@ $(document).ready(function () {
 			}
 			if (TEAMS[T2ut.string]["Faceit"] != "" && TEAMS[T2ut.string]["Faceit"] != null) {
 				T2ut.fa = " | [Faceit](" + TEAMS[T2ut.string]["Faceit"] + ")" || "";
-			}
-			if (TEAMS[T2ut.string]["Discord"] != "" && TEAMS[T2ut.string]["Discord"] != null) {
-				T2ut.fa = " | [Discord](" + TEAMS[T2ut.string]["Discord"] + ")" || "";
 			}
 			if (TEAMS[T2ut.string]["Twitter"] != "" && TEAMS[T2ut.string]["Twitter"] != null) {
 				T2ut.tw = " | [Twitter](" + TEAMS[T2ut.string]["Twitter"] + ")" || "";
@@ -942,7 +934,7 @@ $(document).ready(function () {
 				T2ut.sb = " | [Subreddit](" + TEAMS[T2ut.string]["Subreddit"] + ")" || "";
 			}
 			data[0]["team2info"] = {
-				value: Iconify(team2GID) + " **" + team2GID + "**" + T2ut.wk + T2ut.hl + T2ut.os + T2ut.st + T2ut.fa + T2ut.di + T2ut.tw + T2ut.fb + T2ut.ig + T2ut.tk + T2ut.wb + T2ut.yt + T2ut.tv + T2ut.bi + T2ut.sb
+				value: Iconify(team2GID) + " **" + team2GID + "**" + T2ut.wk + T2ut.hl + T2ut.os + T2ut.st + T2ut.fa + T2ut.tw + T2ut.fb + T2ut.ig + T2ut.tk + T2ut.wb + T2ut.yt + T2ut.tv + T2ut.bi + T2ut.sb
 			};
 		}
 		
@@ -1287,10 +1279,10 @@ $(document).ready(function () {
 		} else {
 			$(this).css('border-color', '#fffb36');
 			teamFullName = teamID;
-			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID,
+			TEAMS[teamID] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID,
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-							"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 		}
 		$('#Team1name').val(teamFullName);
@@ -1307,10 +1299,10 @@ $(document).ready(function () {
 		} else {
 			$(this).css('border-color', '#fffb36');
 			teamFullName = teamID;
-			TEAMS[teamID] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID,
+			TEAMS[teamID] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":teamID, "HLTV Name":teamID, "Name":teamID,
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-							"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 		}
 		$('#Team2name').val(teamFullName);
@@ -1397,10 +1389,10 @@ $(document).ready(function () {
 
 		// Team 1 on HLTV is not in database, create new team entry
 		if (!foundTeam1) {
-			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, 
+			TEAMS[team1Name] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, 
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-							"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.veto-tab').find('input.maint1').val(TEAMS[team1Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint1').blur();
@@ -1409,10 +1401,10 @@ $(document).ready(function () {
 
 		// Team 2 on HLTV is not in database, create new team entry
 		if (!foundTeam2) {
-			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, 
+			TEAMS[team2Name] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, 
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-							"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.veto-tab').find('input.maint2').val(TEAMS[team2Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint2').blur();
@@ -1703,10 +1695,10 @@ $(document).ready(function () {
 		
 		// Team 1 on HLTV is not in database, create new team entry
 		if (!foundTeam1) {
-			TEAMS[team1Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, 
+			TEAMS[team1Name] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":team1Name, "HLTV Name":team1Name, "Name":team1Name, 
 								"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 								"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-								"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+								"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 								"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.main').find('input.T1').val(TEAMS[team]["Name"]);
 			$(this).closest('div.main').find('input.T1').blur();
@@ -1715,10 +1707,10 @@ $(document).ready(function () {
 
 		// Team 2 on HLTV is not in database, create new team entry
 		if (!foundTeam2) {
-			TEAMS[team2Name] = {"LOGO":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, 
+			TEAMS[team2Name] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":team2Name, "HLTV Name":team2Name, "Name":team2Name, 
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
-							"Official Site":"", "Steam":"", "Faceit":"", "Discord":"", "Twitter":"", "Facebook":"", 
+							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
 							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.main').find('input.T2').val(TEAMS[team]["Name"]);
 			$(this).closest('div.main').find('input.T2').blur();
@@ -2247,56 +2239,48 @@ $.post("getJSON.php", {
 });
 
 function IconifyVeto(teamID) {
-	if (TEAMS[teamID]["LOGO"].indexOf("lang") != -1) //team only has country flag, so just use initials
+	if (TEAMS[teamID]["LOGO CODE"].indexOf("lang") != -1 || TEAMS[teamID]["LOGO CODE"] == "") //team only has country flag, so just use initials
 		return Initialsa(teamID);
-	else if (TEAMS[teamID]["LOGO"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO"].indexOf("🌏") == -1) 									//regular logo
-		return "[" + Initialsa(teamID) + TEAMS[teamID]["LOGO"].substring(5) + "-logo)";
+	else if (TEAMS[teamID]["LOGO CODE"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌏") == -1) 									//regular logo
+		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(5) + "-logo)";
 	else
-		return "[" + Initialsa(teamID) + TEAMS[teamID]["LOGO"].substring(3) + "-logo)";
+		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(3) + "-logo)";
 	
 }
 
 function IconifyVetoW(teamID) {
 	if (TEAMS[teamID]["LOGOW"] == "FALSE") //team without a white logo
 		return IconifyVeto(teamID);
-	else if (TEAMS[teamID]["LOGO"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO"].indexOf("🌏") == -1) 						//team with a white logo
-		return "[" + Initialsa(teamID) + TEAMS[teamID]["LOGO"].substring(5) + "w-logo)"; 
+	else if (TEAMS[teamID]["LOGO CODE"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌏") == -1) 						//team with a white logo
+		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(5) + "w-logo)"; 
 	else
-		return "[" + Initialsa(teamID) + TEAMS[teamID]["LOGO"].substring(3) + "w-logo)"; 
+		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(3) + "w-logo)"; 
 }
 
 function IconifyStats(teamID) {
-	if (TEAMS[teamID]["LOGO"] == "lang-un") //no image as logo
+	if (TEAMS[teamID]["LOGO CODE"] == "lang-un") //no image as logo
 		return "**";
-	else if (TEAMS[teamID]["LOGO"].indexOf("lang") != -1) //country flag as logo
-		return "**" + TEAMS[teamID]["LOGO"] + ") ";
+	else if (TEAMS[teamID]["LOGO CODE"] == "") //country flag as logo
+		return "**[" + TEAMS[teamID]["Flag"] + "](lang-" + flagDict[TEAMS[teamID]["Flag"].slice(0,2)] + flagDict[TEAMS[teamID]["Flag"].slice(2,4)] + ") ";
 	else										//regular logo
-		return "" + TEAMS[teamID]["LOGO"] + "-logo) **";
+		return "[" + TEAMS[teamID]["Flag"] + "](" + TEAMS[teamID]["LOGO CODE"] + "-logo) **";
 }
 
-//function Iconify(teamID) {
-//	if (TEAMS[teamID]["LOGO"] === "lang-un") //no image as logo
-//		return "";
-//	else if (TEAMS[teamID]["LOGO"].indexOf("lang") == -1) //regular logo
-//		return "[](#" + TEAMS[teamID]["LOGO"] + "-logo)";
-//	else										//country flag as logo
-//		return "[](#" + TEAMS[teamID]["LOGO"] + ")";
-//}
-
 function Iconify(teamID) {
-	if (TEAMS[teamID]["LOGO"] == "lang-un") //no image as logo
+	if (TEAMS[teamID]["LOGO CODE"] == "lang-un") //no image as logo
 		return "";
-	else if (TEAMS[teamID]["LOGO"].indexOf("lang") != -1) //country flag as logo
-		return "" + TEAMS[teamID]["LOGO"] + ")";
+	else if (TEAMS[teamID]["LOGO CODE"] == "") { // country flag as logo
+		return "[" + TEAMS[teamID]["Flag"] + "](lang-" + flagDict[TEAMS[teamID]["Flag"].slice(0,2)] + flagDict[TEAMS[teamID]["Flag"].slice(2,4)] + ")";
+	}
 	else										//regular logo
-		return "" + TEAMS[teamID]["LOGO"] + "-logo)";
+		return "[" + TEAMS[teamID]["Flag"] + "](" + TEAMS[teamID]["LOGO CODE"] + "-logo)";
 }
 
 function IconifyW(teamID) {
 	if (TEAMS[teamID]["LOGOW"] == "FALSE")
 		return Iconify(teamID);
 	else
-		return "" + TEAMS[teamID]["LOGO"] + "w-logo)";
+		return "[" + TEAMS[teamID]["Flag"] + "](" + TEAMS[teamID]["LOGO CODE"] + "w-logo)";
 }
 
 /**dictionary for creating css flags from emojis **/
