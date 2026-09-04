@@ -353,13 +353,13 @@ $(document).ready(function () {
 			"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 			"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 			"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-			"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+			"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 		if (!TEAMS[team2GID])
 			TEAMS[team2GID] = {"LOGO CODE":"lang-un", "LOGOW":"FALSE", "Initials":team2GID, "HLTV Name":team2GID, "Name":team2GID, 
 			"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 			"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 			"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-			"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+			"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 
 		// event name
 		event_name = $("#event-name").val();
@@ -1283,7 +1283,7 @@ $(document).ready(function () {
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 		}
 		$('#Team1name').val(teamFullName);
 		$('#series-result').data('blue-team', teamFullName);
@@ -1303,7 +1303,7 @@ $(document).ready(function () {
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 		}
 		$('#Team2name').val(teamFullName);
 		$('#series-result').data('red-team', teamFullName);
@@ -1393,7 +1393,7 @@ $(document).ready(function () {
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.veto-tab').find('input.maint1').val(TEAMS[team1Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint1').blur();
 			team1Name = TEAMS[team1Name]["Name"];
@@ -1405,7 +1405,7 @@ $(document).ready(function () {
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.veto-tab').find('input.maint2').val(TEAMS[team2Name]["Name"]);
 			$(this).closest('div.veto-tab').find('input.maint2').blur();
 			team2Name = TEAMS[team2Name]["Name"];
@@ -1699,7 +1699,7 @@ $(document).ready(function () {
 								"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 								"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 								"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-								"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+								"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.main').find('input.T1').val(TEAMS[team]["Name"]);
 			$(this).closest('div.main').find('input.T1').blur();
 			team1Name = TEAMS[team]["Name"];
@@ -1711,7 +1711,7 @@ $(document).ready(function () {
 							"PLAYER 1":"", "PLAYER 2":"", "PLAYER 3":"", "PLAYER 4":"", "PLAYER 5":"", "PLAYER 6":"", "COACH":"", 
 							"SUB 1": "", "SUB 2":"", "SUB 3":"", "SUB 4":"", "SUB 5":"", "SUB 6":"", "Wiki":"", "HLTV":"", 
 							"Official Site":"", "Steam":"", "Faceit":"", "Twitter":"", "Facebook":"", 
-							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Weibo":"", "Bilibili":""}
+							"Instagram":"", "YouTube":"", "Twitch":"", "Subreddit":"", "TikTok":"", "Douyin": "", "Weibo":"", "Bilibili":""}
 			$(this).closest('div.main').find('input.T2').val(TEAMS[team]["Name"]);
 			$(this).closest('div.main').find('input.T2').blur();
 			team2Name = TEAMS[team]["Name"];
@@ -2148,7 +2148,7 @@ window.onbeforeunload = function () {
 
 var TEAMS = {};
 
-$.post("getJSON.php", {
+$.post("php/getJSON.php", {
 	feed: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFFzItpu4lT2eE6ivgvZdA-rMkB_sYT5LSWicXXEnkt-2mdMwThMbmAj0z8e9JTzWawtZBsDCehNeJ/pub?output=csv"
 	//feed: "../csgo/csv/Full_Teams.csv"
 }).done(function (d) {
@@ -2221,7 +2221,7 @@ $.post("getJSON.php", {
 
 var EVENTS = {}
 
-$.post("getJSON.php", {
+$.post("php/getJSON.php", {
 	feed: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTIZsUyfKpuANjFhteP8aJWSacnLBLTPCtD6Gc8ESy6Bphvd57VSCfB_xwvjw_RsY_mvoFffbDPe25d/pub?output=csv"
 	//feed: "../csgo/csv/Events.csv"
 }).done(function (d) {
@@ -2242,9 +2242,9 @@ function IconifyVeto(teamID) {
 	if (TEAMS[teamID]["LOGO CODE"].indexOf("lang") != -1 || TEAMS[teamID]["LOGO CODE"] == "") //team only has country flag, so just use initials
 		return Initialsa(teamID);
 	else if (TEAMS[teamID]["LOGO CODE"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌏") == -1) 									//regular logo
-		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(5) + "-logo)";
+		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(5) + "-logo)";
 	else
-		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(3) + "-logo)";
+		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(3) + "-logo)";
 	
 }
 
@@ -2252,35 +2252,35 @@ function IconifyVetoW(teamID) {
 	if (TEAMS[teamID]["LOGOW"] == "FALSE") //team without a white logo
 		return IconifyVeto(teamID);
 	else if (TEAMS[teamID]["LOGO CODE"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌏") == -1) 						//team with a white logo
-		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(5) + "w-logo)"; 
+		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(5) + "w-logo)"; 
 	else
-		return "[" + Initialsa(teamID) + "](" + TEAMS[teamID]["LOGO CODE"].substring(3) + "w-logo)"; 
+		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(3) + "w-logo)"; 
 }
 
 function IconifyStats(teamID) {
 	if (TEAMS[teamID]["LOGO CODE"] == "lang-un") //no image as logo
 		return "**";
 	else if (TEAMS[teamID]["LOGO CODE"] == "") //country flag as logo
-		return "**[" + TEAMS[teamID]["Flag"] + "](lang-" + flagDict[TEAMS[teamID]["Flag"].slice(0,2)] + flagDict[TEAMS[teamID]["Flag"].slice(2,4)] + ") ";
+		return "**[" + TEAMS[teamID]["Flag"] + "](#lang-" + flagDict[TEAMS[teamID]["Flag"].slice(0,2)] + flagDict[TEAMS[teamID]["Flag"].slice(2,4)] + ") ";
 	else										//regular logo
-		return "[" + TEAMS[teamID]["Flag"] + "](" + TEAMS[teamID]["LOGO CODE"] + "-logo) **";
+		return "[" + TEAMS[teamID]["Flag"] + "](#" + TEAMS[teamID]["LOGO CODE"] + "-logo) **";
 }
 
 function Iconify(teamID) {
 	if (TEAMS[teamID]["LOGO CODE"] == "lang-un") //no image as logo
 		return "";
 	else if (TEAMS[teamID]["LOGO CODE"] == "") { // country flag as logo
-		return "[" + TEAMS[teamID]["Flag"] + "](lang-" + flagDict[TEAMS[teamID]["Flag"].slice(0,2)] + flagDict[TEAMS[teamID]["Flag"].slice(2,4)] + ")";
+		return "[" + TEAMS[teamID]["Flag"] + "](#lang-" + flagDict[TEAMS[teamID]["Flag"].slice(0,2)] + flagDict[TEAMS[teamID]["Flag"].slice(2,4)] + ")";
 	}
 	else										//regular logo
-		return "[" + TEAMS[teamID]["Flag"] + "](" + TEAMS[teamID]["LOGO CODE"] + "-logo)";
+		return "[" + TEAMS[teamID]["Flag"] + "](#" + TEAMS[teamID]["LOGO CODE"] + "-logo)";
 }
 
 function IconifyW(teamID) {
 	if (TEAMS[teamID]["LOGOW"] == "FALSE")
 		return Iconify(teamID);
 	else
-		return "[" + TEAMS[teamID]["Flag"] + "](" + TEAMS[teamID]["LOGO CODE"] + "w-logo)";
+		return "[" + TEAMS[teamID]["Flag"] + "](#" + TEAMS[teamID]["LOGO CODE"] + "w-logo)";
 }
 
 /**dictionary for creating css flags from emojis **/
