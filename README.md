@@ -2,6 +2,10 @@
 
 The PMTC is a website designed to facilitate the creation of formatted Post-Match Discussions for Counter-Strike matches on r/GlobalOffensive.
 
+## Local setup
+
+See [LOCAL_SETUP.md](LOCAL_SETUP.md) to run this PHP app on your machine (`php -S` from `csgo/`).
+
 ## Databases
 
 Team and event information databases are included as csv files, but more up to date versions can also be downloaded from here. Most of this data is taken from Liquipedia, but some manual curation is used for specific cases like team names or links that are banned on Reddit. Also, using these databases means the system does not need to regularly scrape Liquipedia.
@@ -23,26 +27,26 @@ More detail can be found in pmtc.php and pmtc.js. The below template is an examp
 ### Body
 
 ```
-#%T1 %IconT1 [%series-result](%hltv-url) %IconT2 %T2  
+#%T1 %IconT1 [%series-result](%hltv-url) %IconT2 %T2
 
-**%pergame-mapi:** %mapi-result  
+**%pergame-mapi:** %mapi-result
 
 &amp;nbsp;
 
-**%IconWinner %WinnerName %series-context1**  
+**%IconWinner %WinnerName %series-context1**
 
-**%IconLoser %LoserName %series-context2**    
+**%IconLoser %LoserName %series-context2**
 
 &amp;nbsp;
 
 -----
-### Predicted VRS Impact  
-  
-Team | Rank | Diff | Total  
-:--|:--:|:--:|:--:  
-%IconStatsT1%Team1Initials** | #%VRSB1 → #%VRSA1 | %VRSD1 pts | %VRSTA1 pts |  
-%IconStatsT2%Team2Initials** | #%VRSB2 → #%VRSA2 | %VRSD2 pts | %VRSTA2 pts | 
-  
+### Predicted VRS Impact
+
+Team | Rank | Diff | Total
+:--|:--:|:--:|:--:
+%IconStatsT1%Team1Initials** | #%VRSB1 → #%VRSA1 | %VRSD1 pts | %VRSTA1 pts |
+%IconStatsT2%Team2Initials** | #%VRSB2 → #%VRSA2 | %VRSD2 pts | %VRSTA2 pts |
+
 ^Note: ^VRS ^officially ^updates ^once ^per ^month. ^This ^is ^simply ^a ^prediction ^that ^might ^not ^take ^into ^account ^all ^factors ^that ^go ^into ^VRS ^calculations.
 
 &amp;nbsp;
@@ -57,20 +61,20 @@ Team | Rank | Diff | Total
 
 &amp;nbsp;
 
----  
+---
 
 ### Team Information
 
 %IconT1 **%T1** | [Liquipedia](%t1-liquipedia) | [HLTV](%t1-hltv) | [Official Site](%t1-site) | [Steam](%tl-steam) | [Faceit](%t1-faceit) | [Discord](%t1-discord) | [Twitter](%t1-twitter) | [Facebook](%t1-facebook) | [Instagram](%t1-instagram) | [TikTok](%t1-tiktok) | [Weibo](%t1-weibo) | [YouTube](%t1-youtube) | [Twitch](%t1-twitch) | [Bilibili](%t1-bilibili) | [Subreddit](%t1-subreddit)
-**Roster**: %t1-roster 
-**Coach**: %t1-coach  
+**Roster**: %t1-roster
+**Coach**: %t1-coach
 **Subs/Benched**: %t1-subs
 
 %IconT2 **%T2** | [Liquipedia](%t2-liquipedia) | [HLTV](%t2-hltv) | [Official Site](%t2-site) | [Steam](%t2-steam) | [Faceit](%t2-faceit) | [Discord](%t2-discord) | [Twitter](%t2-twitter) | [Facebook](%t2-facebook) | [Instagram](%t2-instagram) | [TikTok](%t2-tiktok) | [Weibo](%t2-weibo) | [YouTube](%t2-youtube) | [Twitch](%t2-twitch) | [Bilibili](%t2-bilibili) | [Subreddit](%t2-subreddit)
-**Roster**: %t2-roster 
-**Coach**: %t2-coach  
+**Roster**: %t2-roster
+**Coach**: %t2-coach
 **Subs/Benched**: %t2-subs
-  
+
 
 ^Note: ^Above ^rosters ^do ^not ^reflect ^temporary ^subs ^and ^may ^be ^out ^of ^date ^if ^recent ^changes ^were ^made
 
@@ -154,12 +158,12 @@ Team | Rank | Diff | Total
 
 ###Highlights
 
-[%highlight-title](%highlight-link)  
+[%highlight-title](%highlight-link)
 
 &amp;nbsp;
 
 ---
 
-[**This thread was created by the Post-Match Team.**](https://docs.google.com/spreadsheets/d/1k5TiV7VuDKLa41MfcDgP1XiBkPvAo_HInRmNlKKEIBM/edit?usp=sharing)  
+[**This thread was created by the Post-Match Team.**](https://docs.google.com/spreadsheets/d/1k5TiV7VuDKLa41MfcDgP1XiBkPvAo_HInRmNlKKEIBM/edit?usp=sharing)
 Want to help post these threads? Message /u/Undercover-Cactus to join the Post-Match Team.
 ```
