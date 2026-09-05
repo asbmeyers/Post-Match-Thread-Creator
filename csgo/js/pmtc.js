@@ -2241,20 +2241,16 @@ $.post("php/getJSON.php", {
 function IconifyVeto(teamID) {
 	if (TEAMS[teamID]["LOGO CODE"].indexOf("lang") != -1 || TEAMS[teamID]["LOGO CODE"] == "") //team only has country flag, so just use initials
 		return Initialsa(teamID);
-	else if (TEAMS[teamID]["LOGO CODE"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌏") == -1) 									//regular logo
-		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(5) + "-logo)";
 	else
-		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(3) + "-logo)";
+		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"] + "-logo)";
 	
 }
 
 function IconifyVetoW(teamID) {
 	if (TEAMS[teamID]["LOGOW"] == "FALSE") //team without a white logo
 		return IconifyVeto(teamID);
-	else if (TEAMS[teamID]["LOGO CODE"].indexOf("🌎") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌍") == -1 && TEAMS[teamID]["LOGO CODE"].indexOf("🌏") == -1) 						//team with a white logo
-		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(5) + "w-logo)"; 
 	else
-		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"].substring(3) + "w-logo)"; 
+		return "[" + Initialsa(teamID) + "](#" + TEAMS[teamID]["LOGO CODE"] + "w-logo)"; 
 }
 
 function IconifyStats(teamID) {
