@@ -160,6 +160,7 @@ Team | Rank | Diff | Total
 
 ---
 
-[**This thread was created by the Post-Match Team.**](https://docs.google.com/spreadsheets/d/1k5TiV7VuDKLa41MfcDgP1XiBkPvAo_HInRmNlKKEIBM/edit?usp=sharing)  
-Want to help post these threads? Message /u/Undercover-Cactus to join the Post-Match Team.
+**This thread was created by the Post-Match Team.**  
+[**PMT Discord**](https://discord.gg/X6Pn2jbmJc) | [**PMT Creator**](https://postmatchteam.uk) | [**PMT Archive**](https://docs.google.com/spreadsheets/d/1k5TiV7VuDKLa41MfcDgP1XiBkPvAo_HInRmNlKKEIBM/edit?usp=sharing)  
+The PMT is always looking for help! If you'd want to help contribute, message u/Undercover-Cactus on Reddit, or join the Discord (encouraged but not required). Match threads do not take that long to create once you know what you're doing, and you would not be required to contribute any specific amount - even one match a year would be helpful. Thanks! 
 ```
